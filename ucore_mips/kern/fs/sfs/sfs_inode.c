@@ -332,7 +332,6 @@ sfs_dirent_read_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, int slot, stru
     return 0;
 }
 
-
 #define sfs_dirent_link_nolock_check(sfs, sin, slot, lnksin, name)                  \
     do {                                                                            \
         int err;                                                                    \
