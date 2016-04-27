@@ -1,20 +1,25 @@
 #include <defs.h>
 #include <kmalloc.h>
 #include <sem.h>
-#include <vfs.h>
+// #include <vfs.h>
 #include <dev.h>
 #include <file.h>
-#include <sfs.h>
+// #include <sfs.h>
 #include <inode.h>
 #include <assert.h>
+// Transplant
+#include <yaffs_vfs.h>
 //called when init_main proc start
 void
 fs_init(void) {
-    vfs_init();
+    // Transplant
+    // vfs_init();
+    yaffs_vfs_init();
     dev_init();
     sfs_init();
 }
 
+// NOTE: Need Transplant
 void
 fs_cleanup(void) {
     vfs_cleanup();
@@ -96,4 +101,3 @@ dup_fs(struct fs_struct *to, struct fs_struct *from) {
     }
     return 0;
 }
-

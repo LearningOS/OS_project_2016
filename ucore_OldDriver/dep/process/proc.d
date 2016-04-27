@@ -7,4 +7,5 @@ obj/process/proc.o dep/process/proc.d: kern/process/proc.c \
  kern/libs/string.h kern/mm/pmm.h kern/include/error.h kern/include/elf.h \
  kern/mm/vmm.h kern/sync/sem.h kern/sync/wait.h kern/libs/stdio.h \
  kern/include/stdarg.h kern/libs/stdlib.h kern/include/unistd.h \
- kern/fs/fs.h kern/fs/vfs/vfs.h kern/fs/sfs/sfs.h kern/fs/sysfile.h
+ kern/fs/fs.h kern/fs/vfs/vfs.h kern/fs/sfs/sfs.h \
+ kern/fs/yaffs2_direct/yaffs_vfs.h kern/fs/sysfile.h

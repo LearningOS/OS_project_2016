@@ -5,5 +5,5 @@ obj/fs/sfs/sfs_fs.o dep/fs/sfs/sfs_fs.d: kern/fs/sfs/sfs_fs.c \
  kern/include/atomic.h kern/include/thumips.h kern/include/asm/mipsregs.h \
  kern/driver/intr.h kern/debug/assert.h kern/sync/wait.h \
  kern/fs/vfs/vfs.h kern/fs/sfs/sfs.h kern/include/unistd.h \
- kern/fs/devs/dev.h kern/fs/vfs/inode.h kern/fs/iobuf.h \
- kern/fs/sfs/bitmap.h kern/include/error.h
+ kern/fs/yaffs2_direct/yaffs_vfs.h kern/fs/devs/dev.h kern/fs/vfs/inode.h \
+ kern/fs/iobuf.h kern/fs/sfs/bitmap.h kern/include/error.h

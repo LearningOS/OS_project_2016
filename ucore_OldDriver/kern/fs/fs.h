@@ -53,4 +53,3 @@ fs_count_dec(struct fs_struct *fs_struct) {
 }
 
 #endif /* !__KERN_FS_FS_H__ */
-

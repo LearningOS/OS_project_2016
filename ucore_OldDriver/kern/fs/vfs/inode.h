@@ -6,6 +6,7 @@
 #include <sfs.h>
 #include <atomic.h>
 #include <assert.h>
+#include <yaffs_vfs.h>
 
 struct stat;
 struct iobuf;
@@ -13,7 +14,7 @@ struct iobuf;
 /*
  * A struct inode is an abstract representation of a file.
  *
- * It is an interface that allows the kernel's filesystem-independent 
+ * It is an interface that allows the kernel's filesystem-independent
  * code to interact usefully with multiple sets of filesystem code.
  */
 
@@ -30,10 +31,13 @@ struct inode {
     union {
         struct device __device_info;
         struct sfs_inode __sfs_inode_info;
+        // Transplant
+        struct yaffs2_inode __yaffs2_inode_info;
     } in_info;
     enum {
         inode_type_device_info = 0x1234,
         inode_type_sfs_inode_info,
+        inode_type_yaffs2_inode_info,
     } in_type;
     atomic_t ref_count;
     atomic_t open_count;
@@ -84,7 +88,7 @@ void inode_kill(struct inode *node);
  *                      reject illegal or undesired open modes. Note that
  *                      various operations can be performed without the
  *                      file actually being opened.
- *                      The inode need not look at O_CREAT, O_EXCL, or 
+ *                      The inode need not look at O_CREAT, O_EXCL, or
  *                      O_TRUNC, as these are handled in the VFS layer.
  *
  *                      VOP_EACHOPEN should not be called directly from
@@ -128,7 +132,7 @@ void inode_kill(struct inode *node);
  *                      DATA. The interpretation of the data is specific
  *                      to each ioctl.
  *
- *    vop_stat        - Return info about a file. The pointer is a 
+ *    vop_stat        - Return info about a file. The pointer is a
  *                      pointer to struct stat; see kern/stat.h.
  *
  *    vop_gettype     - Return type of file. The values for file types
@@ -183,7 +187,21 @@ struct inode_ops {
     int (*vop_create)(struct inode *node, const char *name, bool excl, struct inode **node_store);
     int (*vop_lookup)(struct inode *node, char *path, struct inode **node_store);
 	int (*vop_ioctl)(struct inode *node, int op, void *data);
+    // Transplant
+	int (*vop_mkdir) (struct inode * node, const char *name);
+	int (*vop_link) (struct inode * node, const char *name, struct inode * link_node);
+	int (*vop_rename) (struct inode * node, const char *name, struct inode * new_node, const char *new_name);
+	int (*vop_readlink) (struct inode * node, struct iobuf * iob);
+	int (*vop_symlink) (struct inode * node, const char *name, const char *path);
+	int (*vop_unlink) (struct inode * node, const char *name);
+	int (*vop_lookup_parent) (struct inode * node, char *path, struct inode ** node_store, char **endp);
 };
+
+int null_vop_pass(void);
+int null_vop_inval(void);
+int null_vop_unimp(void);
+int null_vop_isdir(void);
+int null_vop_notdir(void);
 
 /*
  * Consistency check
@@ -213,6 +231,15 @@ void inode_check(struct inode *node, const char *opstr);
 #define vop_truncate(node, len)                                     (__vop_op(node, truncate)(node, len))
 #define vop_create(node, name, excl, node_store)                    (__vop_op(node, create)(node, name, excl, node_store))
 #define vop_lookup(node, path, node_store)                          (__vop_op(node, lookup)(node, path, node_store))
+// Transplant
+#define vop_mkdir(node, name)                                       (__vop_op(node, mkdir)(node, name))
+#define vop_link(node, name, link_node)                             (__vop_op(node, link)(node, name, link_node))
+#define vop_rename(node, name, new_node, new_name)                  (__vop_op(node, rename)(node, name, new_node, new_name))
+#define vop_readlink(node, iob)                                     (__vop_op(node, readlink)(node, iob))
+#define vop_symlink(node, name, path)                               (__vop_op(node, symlink)(node, name, path))
+#define vop_ioctl(node, op, data)                                   (__vop_op(node, ioctl)(node, op, data))
+#define vop_unlink(node, name)                                      (__vop_op(node, unlink)(node, name))
+#define vop_lookup_parent(node, path, node_store, endp)             (__vop_op(node, lookup_parent)(node, path, node_store, endp))
 
 
 #define vop_fs(node)                                                ((node)->in_fs)
@@ -233,6 +260,12 @@ void inode_check(struct inode *node, const char *opstr);
 #define vop_open_inc(node)                                          inode_open_inc(node)
 #define vop_open_dec(node)                                          inode_open_dec(node)
 
+// Transplant
+#define NULL_VOP_PASS                                               ((void *)null_vop_pass)
+#define NULL_VOP_INVAL                                              ((void *)null_vop_inval)
+#define NULL_VOP_UNIMP                                              ((void *)null_vop_unimp)
+#define NULL_VOP_ISDIR                                              ((void *)null_vop_isdir)
+#define NULL_VOP_NOTDIR                                             ((void *)null_vop_notdir)
 
 static inline int
 inode_ref_count(struct inode *node) {
@@ -245,4 +278,3 @@ inode_open_count(struct inode *node) {
 }
 
 #endif /* !__KERN_FS_VFS_INODE_H__ */
-
