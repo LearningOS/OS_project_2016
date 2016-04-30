@@ -64,4 +64,3 @@ ide_write_secs(unsigned int ideno, uint32_t secno, const void *src, size_t nsecs
     return ide_devices[ideno].write_secs(&ide_devices[ideno], secno, src, nsecs);
   return 0;
 }
-

@@ -570,7 +570,7 @@ static struct yaffs_dev *yaffsfs_FindMountPoint(const YCHAR *path)
 {
 	struct yaffs_dev *dev;
 	YCHAR *restOfPath=NULL;
-	dev = yaffsfs_FindDevice(path,&restOfPath);
+	dev = yaffsfs_FindDevice(path, &restOfPath);
 	if(dev && restOfPath && *restOfPath)
 		dev = NULL;
 	return dev;
@@ -2470,7 +2470,6 @@ int yaffs_mount_common(const YCHAR *path,int read_only, int skip_checkpt, struct
 		yaffsfs_SetError(-ENAMETOOLONG);
 		return -1;
 	}
-
 	yaffsfs_Lock();
 
 	yaffsfs_InitHandles();
@@ -2485,24 +2484,33 @@ int yaffs_mount_common(const YCHAR *path,int read_only, int skip_checkpt, struct
 				result = yaffs_guts_initialise(dev);
 				dev->param.skip_checkpt_rd = skip;
 			} else {
+				// debug-for-Translate
+				kprintf("no skip_checkpt\n");
 				result = yaffs_guts_initialise(dev);
+				kprintf("and the result is 0x%08x\n", result);
 			}
 
-			if(result == YAFFS_FAIL)
+			if(result == YAFFS_FAIL) {
 				yaffsfs_SetError(-ENOMEM);
+			}
+			// debug-for-Translate
+			kprintf("result is %s\n", result ? "Valid" : "Null");
 			retVal = result ? 0 : -1;
 
-		}
-		else
+		} else {
 			yaffsfs_SetError(-EBUSY);
-	} else
+		}
+	} else {
+		// debug-for-Translate
+		kprintf("%s: the dev is NULL\n", __func__);
 		yaffsfs_SetError(-ENODEV);
-
+	}
 	yaffsfs_Unlock();
-  if(dev_stored)
-    *dev_stored = dev;
-	return retVal;
 
+	if(dev_stored) {
+		*dev_stored = dev;
+	}
+	return retVal;
 }
 
 int yaffs_mount2(const YCHAR *path, int readonly)

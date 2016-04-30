@@ -25,6 +25,7 @@ void setup_exception_vector()
 void __noreturn
 kern_init(void) {
     //setup_exception_vector();
+    // exit(1);
     // debug
     // cons_putc('c');
     tlb_invalidate_all();
@@ -34,7 +35,7 @@ kern_init(void) {
     // cons_putc('c');
     cons_init();                // init the console
     // cons_putc('d');
-    vga_init();                 // vga_init
+    // vga_init();                 // vga_init
     clock_init();               // init clock interrupt
 
     check_initrd();
@@ -59,8 +60,12 @@ kern_init(void) {
     ide_init();
     fs_init();
 
+    // debug-for-Translate
+	kprintf("%s line %d: before intr_enable\n", __func__, __LINE__);
     intr_enable();              // enable irq interrupt
     //*(int*)(0x00124) = 0x432;
     //asm volatile("divu $1, $1, $1");
+    // debug-for-Translate
+	kprintf("%s line %d: before cpu_idle\n", __func__, __LINE__);
     cpu_idle();
 }

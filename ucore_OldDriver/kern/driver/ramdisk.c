@@ -3,7 +3,7 @@
  *
  *       Filename:  ramdisk.c
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  03/26/2012 06:16:29 PM
@@ -24,6 +24,9 @@
 #include <stdio.h>
 #include <fs.h>
 
+//debug-for-transplant
+#include <stdio.h>
+
 #define MIN(x,y) (((x)<(y))?(x):(y))
 
 //char initrd_begin[], initrd_end[];
@@ -33,7 +36,7 @@ bool check_initrd(){
     kprintf("Warning: No Initrd!\n");
     return 0;
   }
-  kprintf("Initrd: 0x%08x - 0x%08x, size: 0x%08x, magic: 0x%08x\n", 
+  kprintf("Initrd: 0x%08x - 0x%08x, size: 0x%08x, magic: 0x%08x\n",
       _initrd_begin, _initrd_end-1, _initrd_end - _initrd_begin, *(uint32_t*)_initrd_begin);
   return 1;
 }
@@ -44,7 +47,7 @@ static int ramdisk_read(struct ide_device* dev, size_t secno, void *dst, size_t 
   nsecs = MIN(nsecs, dev->size-secno);
   if(nsecs<0)
     return -1;
-  memcpy(dst, (void*)(dev->iobase+secno*SECTSIZE), nsecs*SECTSIZE); 
+  memcpy(dst, (void*)(dev->iobase+secno*SECTSIZE), nsecs*SECTSIZE);
   return 0;
 }
 
@@ -54,7 +57,7 @@ static int ramdisk_write(struct ide_device* dev, size_t secno,const  void *src, 
   nsecs = MIN(nsecs, dev->size-secno);
   if(nsecs<0)
     return -1;
-  memcpy( (void*)(dev->iobase+secno*SECTSIZE),src, nsecs*SECTSIZE); 
+  memcpy( (void*)(dev->iobase+secno*SECTSIZE),src, nsecs*SECTSIZE);
   return 0;
 }
 
@@ -74,9 +77,11 @@ void ramdisk_init_struct(struct ide_device* dev)
     dev->size = INITRD_SIZE()/SECTSIZE;
     dev->iobase = (uintptr_t)_initrd_begin;
     strcpy(dev->model, "KERN_INITRD");
+    // debug-for-transplant
+    kprintf("set dev->init with ramdisk\n");
+
     dev->init = ramdisk_init;
     dev->read_secs = ramdisk_read;
     dev->write_secs = ramdisk_write;
   }
 }
-

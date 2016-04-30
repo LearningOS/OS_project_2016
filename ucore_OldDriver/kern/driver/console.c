@@ -204,7 +204,7 @@ cons_putc(int c) {
     local_intr_save(intr_flag);
     {
         serial_putc(c);
-        vga_putch(c);
+        // vga_putch(c);
     }
     local_intr_restore(intr_flag);
 }
@@ -235,4 +235,3 @@ cons_getc(void) {
     local_intr_restore(intr_flag);
     return c;
 }
-

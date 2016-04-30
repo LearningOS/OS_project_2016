@@ -212,4 +212,3 @@ int
 sfs_mount(const char *devname) {
     return vfs_mount(devname, sfs_do_mount);
 }
-

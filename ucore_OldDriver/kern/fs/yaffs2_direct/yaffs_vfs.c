@@ -147,55 +147,61 @@ static void yaffs_vfs_do_cleanup(struct fs *fs)
 static int
 yaffs_vfs_do_mount(struct device *dev, struct fs **fs_store)
 {
-  struct fs *fs;
-  if ((fs = alloc_fs(yaffs2)) == NULL){
-    return -E_NO_MEM;
-  }
+	// while (1);
+	struct fs *fs;
+	if ((fs = alloc_fs(yaffs2)) == NULL){
+	return -E_NO_MEM;
+	}
 
-  struct yaffs2_fs *yfs = fsop_info(fs, yaffs2);
-  yfs->dev = dev;
+	struct yaffs2_fs *yfs = fsop_info(fs, yaffs2);
+	yfs->dev = dev;
 
-  //TODO mount vfs here
-  kprintf("yaffs_vfs_do_mount:  mount %s", mount_partition);
-  int ret = yaffs_mount_common(mount_partition,0, 0, &(yfs->ydev));
-  if(ret)
-    panic("yaffs_vfs_do_mount: faild to mount %s", mount_partition);
+	// Transplant
+	// yaffsfs_OSInitialisation();
+
+	//TODO mount vfs here
+	kprintf("yaffs_vfs_do_mount:  mount %s\n", mount_partition);
+	int ret = yaffs_mount_common(mount_partition, 0, 0, &(yfs->ydev));
+	if(ret)
+	panic("yaffs_vfs_do_mount: faild to mount %s", mount_partition);
 
 
-  fs->fs_sync =  yaffs_vfs_do_sync;
-  fs->fs_get_root = yaffs_vfs_do_get_root;
-  fs->fs_unmount = yaffs_vfs_do_unmount;
-  fs->fs_cleanup = yaffs_vfs_do_cleanup;
+	fs->fs_sync =  yaffs_vfs_do_sync;
+	fs->fs_get_root = yaffs_vfs_do_get_root;
+	fs->fs_unmount = yaffs_vfs_do_unmount;
+	fs->fs_cleanup = yaffs_vfs_do_cleanup;
 
-  *fs_store = fs;
-  return 0;
+	*fs_store = fs;
+	return 0;
 }
 
 int yaffs_vfs_mount(const char *devname)
 {
-  return vfs_mount(devname, yaffs_vfs_do_mount);
+	return vfs_mount(devname, yaffs_vfs_do_mount);
 }
 
 
 void
 yaffs_vfs_init(void) {
-#ifndef HAS_NANDFLASH
-  kprintf("yaffs_vfs_init: nandflash not supported, use ramsim\n.");
-  int ret;
-  if ((ret = yaffs_vfs_mount("disk1")) != 0) {
-    panic("failed: yaffs2: yaffs_vfs_mount: %e.\n", ret);
-  }
-
-#else
-  if(check_nandflash()){
-    int ret;
-    if ((ret = yaffs_vfs_mount("disk1")) != 0) {
-      panic("failed: yaffs2: yaffs_vfs_mount: %e.\n", ret);
-    }
-  }else{
-    kprintf("yaffs_vfs_init: nandflash not found\n");
-  }
-#endif
+	// Transplant
+	yaffs_start_up();
+// #ifndef HAS_NANDFLASH
+// 	kprintf("yaffs_vfs_init: nandflash not supported, use ramsim.\n");
+// 	int ret;
+// 	if ((ret = yaffs_vfs_mount("disk1")) != 0) {
+// 		panic("failed: yaffs2: yaffs_vfs_mount: %e.\n", ret);
+// 	}
+//
+// #else
+	if(check_nandflash()){
+		int ret;
+		if ((ret = yaffs_vfs_mount("disk1")) != 0) {
+			panic("failed: yaffs2: yaffs_vfs_mount: %e.\n", ret);
+		}
+	} else {
+		kprintf("yaffs_vfs_init: nandflash not found\n");
+	}
+// #endif
 }
 
 static int yaffs_vop_reclaim(struct inode *node)

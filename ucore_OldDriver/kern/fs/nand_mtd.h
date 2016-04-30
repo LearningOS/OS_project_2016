@@ -3,7 +3,7 @@
  *
  *       Filename:  nand_mtd.h
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  04/06/2012 07:59:08 PM
@@ -15,6 +15,8 @@
  *
  * =====================================================================================
  */
+
+#include "defs.h"
 
 #ifndef __ARCH_ARM_DRIVER_MTD_H
 #define __ARCH_ARM_DRIVER_MTD_H

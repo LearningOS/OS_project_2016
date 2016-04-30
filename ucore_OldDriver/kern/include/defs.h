@@ -27,6 +27,9 @@ typedef int int32_t;
 typedef unsigned int uint32_t;
 typedef long long int64_t;
 typedef unsigned long long uint64_t;
+// Transplant
+typedef uint32_t mode_t;
+typedef uint32_t dev_t;
 
 /* *
  * Pointers and addresses are 32 bits long.
@@ -49,7 +52,7 @@ typedef size_t ppn_t;
  * Rounding operations (efficient when n is a power of 2)
  * Round down to the nearest multiple of n
  * */
-/*  
+/*
 #define ROUNDDOWN(a, n) ({                                          \
             size_t __a = (size_t)(a);                               \
             (typeof(a))(__a - __a % (n));                           \
@@ -85,4 +88,3 @@ uint32_t __n = (1<<(uint32_t)(n));                           \
     ((type *)((char *)(ptr) - offsetof(type, member)))
 
 #endif /* !__LIBS_DEFS_H__ */
-

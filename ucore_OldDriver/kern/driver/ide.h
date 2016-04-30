@@ -18,13 +18,12 @@ struct ide_device {
     uintptr_t iobase;
     void *    dev_data;
     char model[32];    // Model in String
-    
+
     void (*init)(struct ide_device *dev);
     /* return 0 if succeed */
     int (*read_secs)(struct ide_device *dev, size_t secno, void *dst, size_t nsecs);
     int (*write_secs)(struct ide_device *dev, size_t secno, const void *src, size_t nsecs);
-    
+
 };
 
 #endif /* !__KERN_DRIVER_RAMDISK_H__ */
-

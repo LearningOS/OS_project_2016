@@ -10,4 +10,3 @@ sfs_init(void) {
         panic("failed: sfs: sfs_mount: %e.\n", ret);
     }
 }
-

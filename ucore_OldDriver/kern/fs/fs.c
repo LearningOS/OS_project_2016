@@ -12,11 +12,14 @@
 //called when init_main proc start
 void
 fs_init(void) {
-    // Transplant
-    // vfs_init();
-    yaffs_vfs_init();
+    vfs_init();
     dev_init();
-    sfs_init();
+    // Transplant
+    yaffs_vfs_init();
+    // sfs_init();
+    // while (1);
+    // debug
+    // while(1);
 }
 
 // NOTE: Need Transplant

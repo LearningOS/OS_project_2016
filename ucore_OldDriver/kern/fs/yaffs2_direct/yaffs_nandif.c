@@ -42,7 +42,7 @@ int ynandif_WriteChunkWithTagsToNAND(struct yaffs_dev * dev, int nand_chunk,
 	yaffs_trace(YAFFS_TRACE_MTD,
 		"nandmtd2_WriteChunkWithTagsToNAND chunk %d data %p tags %p",
 		nand_chunk, data, tags);
-	    
+
 
 	/* For yaffs2 writing there must be both data and tags.
 	 * If we're using inband tags, then the tags are stuffed into
@@ -62,7 +62,7 @@ int ynandif_WriteChunkWithTagsToNAND(struct yaffs_dev * dev, int nand_chunk,
 		spare = &pt;
 		spareSize = sizeof(struct yaffs_packed_tags2);
 	}
-	
+
 	retval = geometry->writeChunk(dev,nand_chunk,
 				data, dev->param.total_bytes_per_chunk,
 				spare, spareSize);
@@ -78,29 +78,31 @@ int ynandif_ReadChunkWithTagsFromNAND(struct yaffs_dev * dev, int nand_chunk,
 	void *spare = NULL;
 	unsigned spareSize;
 	int retval = 0;
-	int eccStatus; //0 = ok, 1 = fixed, -1 = unfixed
+	int eccStatus; //NOTE 0 = ok, 1 = fixed, -1 = unfixed
 	ynandif_Geometry *geometry = (ynandif_Geometry *)(dev->driver_context);
 
 	yaffs_trace(YAFFS_TRACE_MTD,
 		"nandmtd2_ReadChunkWithTagsFromNAND chunk %d data %p tags %p",
 		nand_chunk, data, tags);
-	    
+
 	if(!tags){
 		spare = NULL;
 		spareSize = 0;
 	}else if(dev->param.inband_tags){
-		
+
 		if(!data) {
 			localData = 1;
 			data = yaffs_get_temp_buffer(dev);
 		}
 		spare = NULL;
 		spareSize = 0;
-	}
-	else {
+	} else {
 		spare = &pt;
 		spareSize = sizeof(struct yaffs_packed_tags2);
 	}
+
+	// debug-for-Translate
+	kprintf("%s line %d: after tags check\n", __func__, __LINE__);
 
 	retval = geometry->readChunk(dev,nand_chunk,
 					 data,
@@ -108,10 +110,13 @@ int ynandif_ReadChunkWithTagsFromNAND(struct yaffs_dev * dev, int nand_chunk,
 					 spare,spareSize,
 					 &eccStatus);
 
+	 // debug-for-Translate
+ 	kprintf("%s line %d: after geometry->readChunk\n", __func__, __LINE__);
+
 	if(dev->param.inband_tags){
 		if(tags){
 			struct yaffs_packed_tags2_tags_only * pt2tp;
-			pt2tp = (struct yaffs_packed_tags2_tags_only *)&data[dev->data_bytes_per_chunk];	
+			pt2tp = (struct yaffs_packed_tags2_tags_only *)&data[dev->data_bytes_per_chunk];
 			yaffs_unpack_tags2_tags_only(tags,pt2tp);
 		}
 	}
@@ -122,7 +127,7 @@ int ynandif_ReadChunkWithTagsFromNAND(struct yaffs_dev * dev, int nand_chunk,
 	}
 
 	if(tags && tags->chunk_used){
-		if(eccStatus < 0 || 
+		if(eccStatus < 0 ||
 		   tags->ecc_result == YAFFS_ECC_RESULT_UNFIXED)
 			tags->ecc_result = YAFFS_ECC_RESULT_UNFIXED;
 		else if(eccStatus > 0 ||
@@ -134,7 +139,7 @@ int ynandif_ReadChunkWithTagsFromNAND(struct yaffs_dev * dev, int nand_chunk,
 
 	if(localData)
 		yaffs_release_temp_buffer(dev, data);
-	
+
 	return retval;
 }
 
@@ -161,20 +166,20 @@ static int ynandif_IsBlockOk(struct yaffs_dev *dev, int blockId)
 	return geometry->checkBlockOk(dev,blockId);
 }
 
-int ynandif_QueryNANDBlock(struct yaffs_dev *dev, int blockId, 
+int ynandif_QueryNANDBlock(struct yaffs_dev *dev, int blockId,
 		enum yaffs_block_state *state, u32 *seq_number)
 {
 	unsigned chunkNo;
 	struct yaffs_ext_tags tags;
 
 	*seq_number = 0;
-	
+
 	chunkNo = blockId * dev->param.chunks_per_block;
-	
+
 	if(!ynandif_IsBlockOk(dev,blockId)){
 		*state = YAFFS_BLOCK_STATE_DEAD;
-	} 
-	else 
+	}
+	else
 	{
 		ynandif_ReadChunkWithTagsFromNAND(dev,chunkNo,NULL,&tags);
 
@@ -182,7 +187,7 @@ int ynandif_QueryNANDBlock(struct yaffs_dev *dev, int blockId,
 		{
 			*state = YAFFS_BLOCK_STATE_EMPTY;
 		}
-		else 
+		else
 		{
 			*state = YAFFS_BLOCK_STATE_NEEDS_SCAN;
 			*seq_number = tags.seq_number;
@@ -212,7 +217,7 @@ int ynandif_Deinitialise_flash_fn(struct yaffs_dev *dev)
 }
 
 
-struct yaffs_dev * 
+struct yaffs_dev *
 	yaffs_add_dev_from_geometry(struct yaffs_dev* dev, const YCHAR *name,
 					const ynandif_Geometry *geometry)
 {
@@ -247,4 +252,3 @@ struct yaffs_dev *
 
 	return NULL;
 }
-

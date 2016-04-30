@@ -131,7 +131,7 @@ sys_fsync(uint32_t arg[]) {
     return sysfile_fsync(fd);
 }
 
-static int 
+static int
 sys_chdir(uint32_t arg[]) {
     const char *path = (const char *)arg[0];
     return sysfile_chdir(path);
@@ -167,14 +167,14 @@ sys_fetchrun(uint32_t arg[]) {
   return fetchrun(fd, fpath, fpath_len);
 }
 
-static int
-sys_redraw_console(uint32_t arg[]) {
-    bool intr_flag;
-    local_intr_save(intr_flag);
-  vga_redraw();
-    local_intr_restore(intr_flag);
-  return 0;
-}
+// static int
+// sys_redraw_console(uint32_t arg[]) {
+//     bool intr_flag;
+//     local_intr_save(intr_flag);
+//     vga_redraw();
+//     local_intr_restore(intr_flag);
+//     return 0;
+// }
 
 static int (*syscalls[])(uint32_t arg[]) = {
   [SYS_exit]              sys_exit,
@@ -199,7 +199,7 @@ static int (*syscalls[])(uint32_t arg[]) = {
   [SYS_getdirentry]       sys_getdirentry,
   [SYS_dup]               sys_dup,
   [SYS_fetchrun]          sys_fetchrun,
-  [SYS_redraw_console]    sys_redraw_console,
+  // [SYS_redraw_console]    sys_redraw_console,
 };
 
 #define NUM_SYSCALLS        ((sizeof(syscalls)) / (sizeof(syscalls[0])))
@@ -226,4 +226,3 @@ syscall(void) {
   panic("undefined syscall %d, pid = %d, name = %s.\n",
       num, current->pid, current->name);
 }
-

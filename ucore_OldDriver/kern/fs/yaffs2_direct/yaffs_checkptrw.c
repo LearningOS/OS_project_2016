@@ -302,7 +302,15 @@ int yaffs2_checkpt_rd(struct yaffs_dev *dev, void *data, int n_bytes)
 	while (i < n_bytes && ok) {
 
 		if (dev->checkpt_byte_offs < 0 ||
-		    dev->checkpt_byte_offs >= dev->data_bytes_per_chunk) {
+			dev->checkpt_byte_offs >= dev->data_bytes_per_chunk) {
+
+			/*
+			* if check write, dev->checkpt_byte_offs will be zero
+			* if check read, dev->checkpt_byte_offs will be data_bytes_per_chunk
+			*/
+
+			// debug-for-Translate
+			kprintf("%s line %d: checkpt_cur_block is %d\n", __func__, __LINE__, dev->checkpt_cur_block);
 
 			if (dev->checkpt_cur_block < 0) {
 				yaffs2_checkpt_find_block(dev);
@@ -322,10 +330,15 @@ int yaffs2_checkpt_rd(struct yaffs_dev *dev, void *data, int n_bytes)
 			dev->n_page_reads++;
 
 			/* read in the next chunk */
+			// debug-for-Translate
+			kprintf("%s line %d: before read_chunk_tags_fn\n", __func__, __LINE__);
 			dev->param.read_chunk_tags_fn(dev,
 						realigned_chunk,
 						dev->checkpt_buffer,
 						&tags);
+
+			// debug-for-Translate
+			kprintf("%s line %d: tags may be empty\n", __func__, __LINE__);
 
 			if (tags.chunk_id != (dev->checkpt_page_seq + 1) ||
 			    tags.ecc_result > YAFFS_ECC_RESULT_FIXED ||

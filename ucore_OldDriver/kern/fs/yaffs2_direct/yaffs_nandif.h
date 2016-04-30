@@ -1,5 +1,5 @@
 /*
- * YAFFS: Yet another Flash File System . A NAND-flash specific file system. 
+ * YAFFS: Yet another Flash File System . A NAND-flash specific file system.
  *
  * Copyright (C) 2002-2011 Aleph One Ltd.
  *   for Toby Churchill Ltd and Brightstar Engineering
@@ -34,14 +34,14 @@ typedef struct {
 	int (*deinitialise)(struct yaffs_dev *dev);
 
 	int (*readChunk) (struct yaffs_dev *dev,
-					  unsigned pageId, 
+					  unsigned pageId,
 					  unsigned char *data, unsigned dataLength,
 					  unsigned char *spare, unsigned spareLength,
 					  int *eccStatus);
 // ECC status is set to 0 for OK, 1 for fixed, -1 for unfixed.
 
 	int (*writeChunk)(struct yaffs_dev *dev,
-					  unsigned pageId, 
+					  unsigned pageId,
 					  const unsigned char *data, unsigned dataLength,
 					  const unsigned char *spare, unsigned spareLength);
 
@@ -54,7 +54,7 @@ typedef struct {
 
 } ynandif_Geometry;
 
-struct yaffs_dev * 
+struct yaffs_dev *
 	yaffs_add_dev_from_geometry(struct yaffs_dev *dev, const YCHAR *name,
 					const ynandif_Geometry *geometry);
 

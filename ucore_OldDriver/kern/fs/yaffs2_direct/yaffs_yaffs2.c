@@ -267,7 +267,13 @@ static int yaffs2_rd_checkpt_validity_marker(struct yaffs_dev *dev, int head)
 	struct yaffs_checkpt_validity cp;
 	int ok;
 
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
+
 	ok = (yaffs2_checkpt_rd(dev, &cp, sizeof(cp)) == sizeof(cp));
+
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
 
 	if (ok)
 		ok = (cp.struct_type == sizeof(cp)) &&
@@ -732,29 +738,50 @@ static int yaffs2_rd_checkpt_data(struct yaffs_dev *dev)
 		ok = 0;
 	}
 
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
+
 	if (ok)
 		ok = yaffs2_checkpt_open(dev, 0); /* open for read */
+
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
 
 	if (ok) {
 		yaffs_trace(YAFFS_TRACE_CHECKPOINT,
 			"read checkpoint validity");
 		ok = yaffs2_rd_checkpt_validity_marker(dev, 1);
 	}
+
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
+
 	if (ok) {
 		yaffs_trace(YAFFS_TRACE_CHECKPOINT,
 			"read checkpoint device");
 		ok = yaffs2_rd_checkpt_dev(dev);
 	}
+
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
+
 	if (ok) {
 		yaffs_trace(YAFFS_TRACE_CHECKPOINT,
 			"read checkpoint objects");
 		ok = yaffs2_rd_checkpt_objs(dev);
 	}
+
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
+
 	if (ok) {
 		yaffs_trace(YAFFS_TRACE_CHECKPOINT,
 			"read checkpoint validity");
 		ok = yaffs2_rd_checkpt_validity_marker(dev, 0);
 	}
+
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
 
 	if (ok) {
 		ok = yaffs2_rd_checkpt_sum(dev);
@@ -762,8 +789,14 @@ static int yaffs2_rd_checkpt_data(struct yaffs_dev *dev)
 			"read checkpoint checksum %d", ok);
 	}
 
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
+
 	if (!yaffs_checkpt_close(dev))
 		ok = 0;
+
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
 
 	if (ok)
 		dev->is_checkpointed = 1;
@@ -807,23 +840,47 @@ int yaffs_checkpoint_save(struct yaffs_dev *dev)
 
 int yaffs2_checkpt_restore(struct yaffs_dev *dev)
 {
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
+
 	int retval;
 
 	yaffs_trace(YAFFS_TRACE_CHECKPOINT,
 		"restore entry: is_checkpointed %d",
 		dev->is_checkpointed);
 
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
+
 	retval = yaffs2_rd_checkpt_data(dev);
 
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
+
 	if (dev->is_checkpointed) {
+
+		// debug-for-Translate
+		kprintf("%s line %d: \n", __func__, __LINE__);
+
 		yaffs_verify_objects(dev);
+
+		// debug-for-Translate
+		kprintf("%s line %d: \n", __func__, __LINE__);
+
 		yaffs_verify_blocks(dev);
+
+		// debug-for-Translate
+		kprintf("%s line %d: \n", __func__, __LINE__);
+
 		yaffs_verify_free_chunks(dev);
 	}
 
 	yaffs_trace(YAFFS_TRACE_CHECKPOINT,
 		"restore exit: is_checkpointed %d",
 		dev->is_checkpointed);
+
+	// debug-for-Translate
+	kprintf("%s line %d: \n", __func__, __LINE__);
 
 	return retval;
 }

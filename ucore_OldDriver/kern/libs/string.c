@@ -170,6 +170,11 @@ strfind(const char *s, char c) {
     return (char *)s;
 }
 
+// Transplant
+char *strcat(char *dst, const char *src) {
+	return strcpy(dst + strlen(dst), src);
+}
+
 /* *
  * strtol - converts string to long integer
  * @s:      the input string that contains the representation of an integer number
@@ -389,4 +394,3 @@ stradd(const char *src1, const char *src2) {
     }
     return ret;
 }
-

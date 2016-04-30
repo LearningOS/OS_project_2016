@@ -5,24 +5,24 @@
 #include <string.h>
 #include <buddy_pmm.h>
 
-/* The buddy memory allocation technique is a memory allocation algorithm that divides memory into partitions 
+/* The buddy memory allocation technique is a memory allocation algorithm that divides memory into partitions
    to try to satisfy a memory request as suitably as possible. This system makes use of splitting memory into halves
-   to try to give a best-fit. 
-   
+   to try to give a best-fit.
+
    The "Buddy System" algorithm in ucore is drived from:
    1 Page 203~206, Section 8.4 of Yan Wei Ming's chinese book "Data Structure -- C programming language"
-   2 Algorithm R & S of section 2.5 of Volume 1 of Knuth's "The Art of Computer Programming", with note taken 
+   2 Algorithm R & S of section 2.5 of Volume 1 of Knuth's "The Art of Computer Programming", with note taken
      of exercises 25 and 29 of that section.
-   
+
    In a buddy system, the entire memory space available for allocation is initially treated as a single block whose size
    is a power of 2. When the first request is made, if its size is greater than half of the initial block then the entire
    block is allocated. Otherwise, the block is split in two equal companion buddies. If the size of the request is greater
-   than half of one of the buddies, then allocate one to it. Otherwise, one of the buddies is split in half again. This 
+   than half of one of the buddies, then allocate one to it. Otherwise, one of the buddies is split in half again. This
    method continues until the smallest block greater than or equal to the size of the request is found and allocated to it.
-   
-   In this method, when a process terminates the buddy block that was allocated to it is freed. Whenever possible, an 
-   unnallocated buddy is merged with a companion buddy in order to form a larger free block. Two blocks are said to be 
-   companion buddies if they resulted from the split of the same direct parent block. 
+
+   In this method, when a process terminates the buddy block that was allocated to it is freed. Whenever possible, an
+   unnallocated buddy is merged with a companion buddy in order to form a larger free block. Two blocks are said to be
+   companion buddies if they resulted from the split of the same direct parent block.
 */
 
 // {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024}
@@ -141,19 +141,19 @@ page_is_buddy(struct Page *page, size_t order, int zone_num) {
     return 0;
 }
 
-//page2idx - get the related index number idx of continuous page block which this page belongs to 
+//page2idx - get the related index number idx of continuous page block which this page belongs to
 static ppn_t
 page2idx(struct Page *page) {
     return page - zones[page->zone_num].mem_base;
 }
 
-//idx2page - get the related page according to the index number idx of continuous page block 
+//idx2page - get the related page according to the index number idx of continuous page block
 static struct Page *
 idx2page(int zone_num, ppn_t idx) {
     return zones[zone_num].mem_base + idx;
 }
 
-//buddy_free_pages_sub - the actual free implimentation, should consider how to 
+//buddy_free_pages_sub - the actual free implimentation, should consider how to
 //                     - merge the adjacent buddy block
 static void
 buddy_free_pages_sub(struct Page *base, size_t order) {
@@ -322,4 +322,3 @@ const struct pmm_manager buddy_pmm_manager = {
     .nr_free_pages = buddy_nr_free_pages,
     .check = buddy_check,
 };
-

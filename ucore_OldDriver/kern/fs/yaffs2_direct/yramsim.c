@@ -302,5 +302,3 @@ struct yaffs_dev *yramsim_CreateRamSim(const YCHAR *name,
 
 	return yaffs_add_dev_from_geometry(&yramsim_dev0, yramsim_name0,g);
 }
-
-

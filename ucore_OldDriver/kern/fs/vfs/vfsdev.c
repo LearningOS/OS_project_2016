@@ -204,6 +204,8 @@ vfs_mount(const char *devname, int (*mountfunc)(struct device *dev, struct fs **
 
 out:
     unlock_vdev_list();
+    // debug-for-Translate
+    kprintf("%s %d: unlock_vdev_list seccessfully\n", __func__, __LINE__);
     return ret;
 }
 
@@ -261,4 +263,3 @@ vfs_unmount_all(void) {
     }
     return 0;
 }
-

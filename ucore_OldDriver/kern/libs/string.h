@@ -23,5 +23,7 @@ int memcmp(const void *v1, const void *v2, size_t n);
 
 char * strdup(const char *src);
 
-#endif /* !__LIBS_STRING_H__ */
+// Transplant
+char *strcat(char *dst, const char *src);
 
+#endif /* !__LIBS_STRING_H__ */

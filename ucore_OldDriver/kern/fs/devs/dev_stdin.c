@@ -123,4 +123,3 @@ dev_init_stdin(void) {
         panic("stdin: vfs_add_dev: %e.\n", ret);
     }
 }
-

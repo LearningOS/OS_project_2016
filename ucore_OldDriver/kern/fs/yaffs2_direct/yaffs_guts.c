@@ -4636,17 +4636,15 @@ int yaffs_guts_initialise(struct yaffs_dev *dev)
 
 	/* Check geometry parameters. */
 
-	if ((!dev->param.inband_tags && dev->param.is_yaffs2 &&
-		dev->param.total_bytes_per_chunk < 1024) ||
-		(!dev->param.is_yaffs2 &&
-			dev->param.total_bytes_per_chunk < 512) ||
+	if (
+		(!dev->param.inband_tags && dev->param.is_yaffs2 && dev->param.total_bytes_per_chunk < 1024) ||
+		(!dev->param.is_yaffs2 && dev->param.total_bytes_per_chunk < 512) ||
 		(dev->param.inband_tags && !dev->param.is_yaffs2) ||
 		 dev->param.chunks_per_block < 2 ||
 		 dev->param.n_reserved_blocks < 2 ||
 		dev->internal_start_block <= 0 ||
 		dev->internal_end_block <= 0 ||
-		dev->internal_end_block <=
-		(dev->internal_start_block + dev->param.n_reserved_blocks + 2)
+		dev->internal_end_block <= (dev->internal_start_block + dev->param.n_reserved_blocks + 2)
 		) {
 		/* otherwise it is too small */
 		yaffs_trace(YAFFS_TRACE_ALWAYS,
@@ -4682,6 +4680,7 @@ int yaffs_guts_initialise(struct yaffs_dev *dev)
 	/* Finished with most checks. Further checks happen later on too. */
 
 	dev->is_mounted = 1;
+	// while (1);
 
 	/* OK now calculate a few things for the device */
 
@@ -4838,7 +4837,11 @@ int yaffs_guts_initialise(struct yaffs_dev *dev)
 	if (!init_failed) {
 		/* Now scan the flash. */
 		if (dev->param.is_yaffs2) {
+			// debug-for-Translate
+			kprintf("%s line %d: \n", __func__, __LINE__);
 			if (yaffs2_checkpt_restore(dev)) {
+				// debug-for-Translate
+				kprintf("%s line %d: yaffs2_checkpt_restore succeed\n", __func__, __LINE__);
 				yaffs_check_obj_details_loaded(dev->root_dir);
 				yaffs_trace(YAFFS_TRACE_CHECKPOINT |
 					YAFFS_TRACE_MOUNT,
@@ -4849,6 +4852,10 @@ int yaffs_guts_initialise(struct yaffs_dev *dev)
 				/* Clean up the mess caused by an aborted
 				 * checkpoint load then scan backwards.
 				 */
+
+				// debug-for-Translate
+ 				kprintf("%s line %d: yaffs2_checkpt_restore fail\n", __func__, __LINE__);
+
 				yaffs_deinit_blocks(dev);
 
 				yaffs_deinit_tnodes_and_objs(dev);
@@ -4876,6 +4883,9 @@ int yaffs_guts_initialise(struct yaffs_dev *dev)
 		} else if (!yaffs1_scan(dev)) {
 			init_failed = 1;
 		}
+
+		// debug-for-Translate
+		kprintf("%s line %d: end the scan\n", __func__, __LINE__);
 
 		yaffs_strip_deleted_objs(dev);
 		yaffs_fix_hanging_objs(dev);

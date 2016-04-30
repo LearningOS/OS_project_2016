@@ -108,6 +108,8 @@ dev_init(void) {
     init_device(stdin);
     init_device(stdout);
     init_device(disk0);
+    /* for Nand flash */
+	init_device(disk1);
 }
 
 struct inode *
@@ -118,4 +120,3 @@ dev_create_inode(void) {
     }
     return node;
 }
-
