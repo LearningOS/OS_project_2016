@@ -81,6 +81,9 @@ bool
 bitmap_test(struct bitmap *bitmap, uint32_t index) {
     WORD_TYPE *word, mask;
     bitmap_translate(bitmap, index, &word, &mask);
+    // if (index == 436) {
+    //     kprintf("in %s: index is %d word is 0x%08x, mask is 0x%08x\n", __func__, index, *word, mask);
+    // }
     return (*word & mask);
 }
 
@@ -105,4 +108,3 @@ bitmap_getdata(struct bitmap *bitmap, size_t *len_store) {
     }
     return bitmap->map;
 }
-

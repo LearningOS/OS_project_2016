@@ -4,5 +4,4 @@ obj/fs/devs/dev.o dep/fs/devs/dev.d: kern/fs/devs/dev.c \
  kern/include/mips_vm.h kern/include/list.h kern/sync/sem.h \
  kern/include/atomic.h kern/include/thumips.h kern/include/asm/mipsregs.h \
  kern/driver/intr.h kern/debug/assert.h kern/sync/wait.h \
- kern/include/unistd.h kern/fs/yaffs2_direct/yaffs_vfs.h \
- kern/include/error.h
+ kern/include/unistd.h kern/include/error.h

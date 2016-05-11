@@ -408,7 +408,7 @@ void yaffs_verify_objects(struct yaffs_dev *dev)
 {
 	struct yaffs_obj *obj;
 	int i;
-	struct list_head *lh;
+	struct list_entry *lh;
 
 	if (yaffs_skip_verification(dev))
 		return;
@@ -425,7 +425,7 @@ void yaffs_verify_objects(struct yaffs_dev *dev)
 
 void yaffs_verify_obj_in_dir(struct yaffs_obj *obj)
 {
-	struct list_head *lh;
+	struct list_entry *lh;
 	struct yaffs_obj *list_obj;
 	int count = 0;
 
@@ -468,7 +468,7 @@ void yaffs_verify_obj_in_dir(struct yaffs_obj *obj)
 
 void yaffs_verify_dir(struct yaffs_obj *directory)
 {
-	struct list_head *lh;
+	struct list_entry *lh;
 	struct yaffs_obj *list_obj;
 
 	if (!directory) {

@@ -104,4 +104,3 @@ sfs_clear_block(struct sfs_fs *sfs, uint32_t blkno, uint32_t nblks) {
     unlock_sfs_io(sfs);
     return ret;
 }
-

@@ -4,8 +4,6 @@
 #include <defs.h>
 #include <fs.h>
 #include <sfs.h>
-// Transplant
-#include <yaffs_vfs.h>
 
 struct inode;   // abstract structure for an on-disk file (inode.h)
 struct device;  // abstract structure for a device (dev.h)
@@ -38,12 +36,12 @@ struct fs {
     union {
         struct sfs_fs __sfs_info;
         // Transplant
-        struct yaffs2_fs __yaffs2_info;
+        // struct yaffs2_fs __yaffs2_info;
     } fs_info;
     enum {
         fs_type_sfs_info,
         // Transplant
-        fs_type_yaffs2_info,
+        // fs_type_yaffs2_info,
     } fs_type;
     int (*fs_sync)(struct fs *fs);
     struct inode *(*fs_get_root)(struct fs *fs);

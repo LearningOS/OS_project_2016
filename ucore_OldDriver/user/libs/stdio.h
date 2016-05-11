@@ -18,5 +18,3 @@ char *readline(const char *prompt);
 
 
 #endif /* !__LIBS_STDIO_H__ */
-
-

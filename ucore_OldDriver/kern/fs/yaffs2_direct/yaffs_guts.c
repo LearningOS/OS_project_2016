@@ -1872,7 +1872,7 @@ static int yaffs_new_obj_id(struct yaffs_dev *dev)
 {
 	int bucket = yaffs_find_nice_bucket(dev);
 	int found = 0;
-	struct list_head *i;
+	struct list_entry *i;
 	u32 n = (u32) bucket;
 
 	/* Now find an object value that has not already been taken
@@ -1907,7 +1907,7 @@ static void yaffs_hash_obj(struct yaffs_obj *in)
 struct yaffs_obj *yaffs_find_by_number(struct yaffs_dev *dev, u32 number)
 {
 	int bucket = yaffs_hash_fn(number);
-	struct list_head *i;
+	struct list_entry *i;
 	struct yaffs_obj *in;
 
 	list_for_each(i, &dev->obj_bucket[bucket].list) {
@@ -2075,7 +2075,7 @@ static void yaffs_update_parent(struct yaffs_obj *obj)
 	obj->dirty = 1;
 	yaffs_load_current_time(obj, 0, 1);
 	if (dev->param.defered_dir_update) {
-		struct list_head *link = &obj->variant.dir_variant.dirty;
+		struct list_entry *link = &obj->variant.dir_variant.dirty;
 
 		if (yaffs_list_empty(link)) {
 			yaffs_list_add(link, &dev->dirty_dirs);
@@ -2091,7 +2091,7 @@ static void yaffs_update_parent(struct yaffs_obj *obj)
 
 void yaffs_update_dirty_dirs(struct yaffs_dev *dev)
 {
-	struct list_head *link;
+	struct list_entry *link;
 	struct yaffs_obj *obj;
 	struct yaffs_dir_var *d_s;
 	union yaffs_obj_var *o_v;
@@ -4160,10 +4160,10 @@ void yaffs_handle_shadowed_obj(struct yaffs_dev *dev, int obj_id,
 	obj->valid = 1;		/* So that we don't read any other info. */
 }
 
-void yaffs_link_fixup(struct yaffs_dev *dev, struct list_head *hard_list)
+void yaffs_link_fixup(struct yaffs_dev *dev, struct list_entry *hard_list)
 {
-	struct list_head *lh;
-	struct list_head *save;
+	struct list_entry *lh;
+	struct list_entry *save;
 	struct yaffs_obj *hl;
 	struct yaffs_obj *in;
 
@@ -4191,8 +4191,8 @@ static void yaffs_strip_deleted_objs(struct yaffs_dev *dev)
 	/*
 	 *  Sort out state of unlinked and deleted objects after scanning.
 	 */
-	struct list_head *i;
-	struct list_head *n;
+	struct list_entry *i;
+	struct list_entry *n;
 	struct yaffs_obj *l;
 
 	if (dev->read_only)
@@ -4240,8 +4240,8 @@ static void yaffs_fix_hanging_objs(struct yaffs_dev *dev)
 	struct yaffs_obj *obj;
 	struct yaffs_obj *parent;
 	int i;
-	struct list_head *lh;
-	struct list_head *n;
+	struct list_entry *lh;
+	struct list_entry *n;
 	int depth_limit;
 	int hanging;
 
@@ -4302,8 +4302,8 @@ static void yaffs_fix_hanging_objs(struct yaffs_dev *dev)
 static void yaffs_del_dir_contents(struct yaffs_obj *dir)
 {
 	struct yaffs_obj *obj;
-	struct list_head *lh;
-	struct list_head *n;
+	struct list_entry *lh;
+	struct list_entry *n;
 
 	if (dir->variant_type != YAFFS_OBJECT_TYPE_DIRECTORY)
 		BUG();
@@ -4329,7 +4329,7 @@ struct yaffs_obj *yaffs_find_by_name(struct yaffs_obj *directory,
 				     const YCHAR *name)
 {
 	int sum;
-	struct list_head *i;
+	struct list_entry *i;
 	YCHAR buffer[YAFFS_MAX_NAME_LENGTH + 1];
 	struct yaffs_obj *l;
 
@@ -4484,7 +4484,7 @@ loff_t yaffs_get_obj_length(struct yaffs_obj *obj)
 int yaffs_get_obj_link_count(struct yaffs_obj *obj)
 {
 	int count = 0;
-	struct list_head *i;
+	struct list_entry *i;
 
 	if (!obj->unlinked)
 		count++;	/* the object itself */

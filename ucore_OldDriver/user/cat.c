@@ -23,16 +23,16 @@ main(int argc, char **argv) {
         return cat(0);
     }
     else {
-        int i, ret;
+        int i, ret, fd;
         for (i = 1; i < argc; i ++) {
-            if ((ret = open(argv[i], O_RDONLY)) < 0) {
+            if ((fd = open(argv[i], O_RDONLY)) < 0) {
+                return fd;
+            }
+            if ((ret = cat(fd)) != 0) {
                 return ret;
             }
-            if ((ret = cat(ret)) != 0) {
-                return ret;
-            }
+            close(fd);
         }
     }
     return 0;
 }
-

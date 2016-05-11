@@ -1,5 +1,7 @@
 #include "nand_mtd.h"
 
+static char flashMem[8 << 20];
+
 void flash_write_cmd(unsigned char cmd) {
     return ;
 }
@@ -47,8 +49,11 @@ int flash_read_page (struct nand_chip * chip, unsigned page_id,
           unsigned char *data, unsigned char *spare,
           int *eccStatus)
 {
-
-    return -1;
+    int i;
+    for (i = 0; i < chip->pg_size; ++i) {
+        data[i] = flashMem[page_id * chip->pg_size + i];
+    }
+    return 0;
 }
 
 /* spare data only contain user data, ecc auto-appended */
@@ -56,7 +61,16 @@ int flash_write_page (struct nand_chip * chip, unsigned pageId,
            const unsigned char *data, unsigned dataLength,
            const unsigned char *spare, unsigned spareLength)
 {
-    return -1;
+    while (dataLength > 0) {
+        int i;
+        for (i = 0; i < chip->pg_size; ++i) {
+            flashMem[chip->pg_size * pageId + i] = data[i];
+        }
+        data += chip->pg_size;
+        dataLength -= chip->pg_size;
+        ++ pageId;
+    }
+    return 0;
 }
 
 int flash_erase_block (struct nand_chip * chip, unsigned blkID) {
@@ -64,11 +78,11 @@ int flash_erase_block (struct nand_chip * chip, unsigned blkID) {
 }
 /* return 0 if bad */
 int flash_check_block (struct nand_chip * chip, unsigned blkID) {
-    return -1;
+    return 1;
 }
 /* mark bad blk */
 int flash_mark_badblock (struct nand_chip * chip, unsigned blkID) {
-    return -1;
+    return 0;
 }
 
 struct nand_chip flash_chip = {

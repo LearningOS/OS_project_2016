@@ -46,7 +46,7 @@ lsdir(const char *path) {
     struct stat __stat, *stat = &__stat;
     int ret;
     DIR *dirp = opendir(".");
-	
+
     if (dirp == NULL) {
         return -1;
     }
@@ -115,4 +115,3 @@ main(int argc, char **argv) {
     }
     return 0;
 }
-

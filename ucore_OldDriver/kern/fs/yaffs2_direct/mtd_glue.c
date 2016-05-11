@@ -86,7 +86,7 @@ static int mtd_read_page(struct yaffs_dev *dev,
   /*
   * for test, omit the read_page
   */
-  return ret;
+  // return ret;
 
   if(dataLength>=chip->pg_size)
     ret = chip->read_page(chip, pageId, data, tmp_spare, eccStatus);
@@ -94,8 +94,9 @@ static int mtd_read_page(struct yaffs_dev *dev,
     ret = chip->read_page(chip, pageId, data_page_buf, tmp_spare, eccStatus);
     memcpy(data, data_page_buf, dataLength);
   }
-  memcpy(spare, tmp_spare+chip->ecclayout->oobfree[0].offset,
-      spareLength);
+  // debug-for-Translate
+  // memcpy(spare, tmp_spare+chip->ecclayout->oobfree[0].offset,
+  //     spareLength);
   ret = (ret==0)?YAFFS_OK:YAFFS_FAIL;
 
   return ret;

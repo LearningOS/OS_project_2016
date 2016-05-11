@@ -29,15 +29,15 @@
  * way the Linux kernel doubly linked list implementation works.
  */
 
-struct list_head {
-	struct list_head *next; /* next in chain */
-	struct list_head *prev; /* previous in chain */
+struct list_entry {
+	struct list_entry *next; /* next in chain */
+	struct list_entry *prev; /* previous in chain */
 };
 
 
 /* Initialise a static list */
 #define LIST_HEAD(name) \
-struct list_head name = { &(name), &(name)}
+struct list_entry name = { &(name), &(name)}
 
 
 
@@ -50,10 +50,10 @@ do { \
 
 
 /* Add an element to a list */
-static inline void yaffs_list_add(struct list_head *new_entry,
-				struct list_head *list)
+static inline void yaffs_list_add(struct list_entry *new_entry,
+				struct list_entry *list)
 {
-	struct list_head *list_next = list->next;
+	struct list_entry *list_next = list->next;
 
 	list->next = new_entry;
 	new_entry->prev = list;
@@ -62,10 +62,10 @@ static inline void yaffs_list_add(struct list_head *new_entry,
 
 }
 
-static inline void yaffs_list_add_tail(struct list_head *new_entry,
-				 struct list_head *list)
+static inline void yaffs_list_add_tail(struct list_entry *new_entry,
+				 struct list_entry *list)
 {
-	struct list_head *list_prev = list->prev;
+	struct list_entry *list_prev = list->prev;
 
 	list->prev = new_entry;
 	new_entry->next = list;
@@ -77,17 +77,17 @@ static inline void yaffs_list_add_tail(struct list_head *new_entry,
 
 /* Take an element out of its current list, with or without
  * reinitialising the links.of the entry*/
-static inline void yaffs_list_del(struct list_head *entry)
+static inline void yaffs_list_del(struct list_entry *entry)
 {
-	struct list_head *list_next = entry->next;
-	struct list_head *list_prev = entry->prev;
+	struct list_entry *list_next = entry->next;
+	struct list_entry *list_prev = entry->prev;
 
 	list_next->prev = list_prev;
 	list_prev->next = list_next;
 
 }
 
-static inline void yaffs_yaffs_list_del_init(struct list_head *entry)
+static inline void yaffs_yaffs_list_del_init(struct list_entry *entry)
 {
 	yaffs_list_del(entry);
 	entry->next = entry->prev = entry;
@@ -95,7 +95,7 @@ static inline void yaffs_yaffs_list_del_init(struct list_head *entry)
 
 
 /* Test if the list is empty */
-static inline int yaffs_list_empty(struct list_head *entry)
+static inline int yaffs_list_empty(struct list_entry *entry)
 {
 	return (entry->next == entry);
 }

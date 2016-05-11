@@ -26,7 +26,7 @@ vfs_open(char *path, uint32_t open_flags, struct inode **node_store) {
         }
     }
 
-    int ret; 
+    int ret;
 	struct inode *node;
 	bool excl = (open_flags & O_EXCL) != 0;
 	bool create = (open_flags & O_CREAT) != 0;
@@ -45,7 +45,7 @@ vfs_open(char *path, uint32_t open_flags, struct inode **node_store) {
 		return -E_EXISTS;
 	}
     assert(node != NULL);
-	
+
     if ((ret = vop_open(node, open_flags)) != 0) {
         vop_ref_dec(node);
         return ret;

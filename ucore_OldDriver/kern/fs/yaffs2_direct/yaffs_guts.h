@@ -375,8 +375,8 @@ struct yaffs_file_var {
 };
 
 struct yaffs_dir_var {
-	struct list_head children;	/* list of child links */
-	struct list_head dirty;	/* Entry for list of dirty directories */
+	struct list_entry children;	/* list of child links */
+	struct list_entry dirty;	/* Entry for list of dirty directories */
 };
 
 struct yaffs_symlink_var {
@@ -432,14 +432,14 @@ struct yaffs_obj {
 
 	struct yaffs_dev *my_dev;	/* The device I'm on */
 
-	struct list_head hash_link;	/* list of objects in hash bucket */
+	struct list_entry hash_link;	/* list of objects in hash bucket */
 
-	struct list_head hard_links;	/* hard linked object chain*/
+	struct list_entry hard_links;	/* hard linked object chain*/
 
 	/* directory structure stuff */
 	/* also used for linking up the free list */
 	struct yaffs_obj *parent;
-	struct list_head siblings;
+	struct list_entry siblings;
 
 	/* Where's my object header in NAND? */
 	int hdr_chunk;
@@ -475,7 +475,7 @@ struct yaffs_obj {
 };
 
 struct yaffs_obj_bucket {
-	struct list_head list;
+	struct list_entry list;
 	int count;
 };
 
@@ -620,7 +620,7 @@ struct yaffs_dev {
 	void *os_context;
 	void *driver_context;
 
-	struct list_head dev_list;
+	struct list_entry dev_list;
 
 	/* Runtime parameters. Set up by YAFFS. */
 	int data_bytes_per_chunk;
@@ -750,7 +750,7 @@ struct yaffs_dev {
 				 * Refresh happens when this gets to zero. */
 
 	/* Dirty directory handling */
-	struct list_head dirty_dirs;	/* List of dirty directories */
+	struct list_entry dirty_dirs;	/* List of dirty directories */
 
 	/* Summary */
 	int chunks_per_summary;
@@ -929,7 +929,7 @@ void yaffs_set_obj_name_from_oh(struct yaffs_obj *obj,
 				const struct yaffs_obj_hdr *oh);
 void yaffs_add_obj_to_dir(struct yaffs_obj *directory, struct yaffs_obj *obj);
 YCHAR *yaffs_clone_str(const YCHAR *str);
-void yaffs_link_fixup(struct yaffs_dev *dev, struct list_head *hard_list);
+void yaffs_link_fixup(struct yaffs_dev *dev, struct list_entry *hard_list);
 void yaffs_block_became_dirty(struct yaffs_dev *dev, int block_no);
 int yaffs_update_oh(struct yaffs_obj *in, const YCHAR *name,
 		    int force, int is_shrink, int shadows,

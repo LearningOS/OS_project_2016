@@ -54,4 +54,3 @@ iobuf_skip(struct iobuf *iob, size_t n) {
     assert(iob->io_resid >= n);
     iob->io_base += n, iob->io_offset += n, iob->io_resid -= n;
 }
-

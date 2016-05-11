@@ -1,22 +1,22 @@
 #include <defs.h>
 #include <kmalloc.h>
 #include <sem.h>
-// #include <vfs.h>
+#include <vfs.h>
 #include <dev.h>
 #include <file.h>
-// #include <sfs.h>
+#include <sfs.h>
 #include <inode.h>
 #include <assert.h>
 // Transplant
-#include <yaffs_vfs.h>
+// #include <yaffs_vfs.h>
 //called when init_main proc start
 void
 fs_init(void) {
     vfs_init();
     dev_init();
+    sfs_init();
     // Transplant
-    yaffs_vfs_init();
-    // sfs_init();
+    // yaffs_vfs_init();
     // while (1);
     // debug
     // while(1);

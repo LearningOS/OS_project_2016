@@ -47,7 +47,7 @@ struct yaffs_allocator {
 	struct yaffs_tnode_list *alloc_tnode_list;
 
 	int n_obj_created;
-	struct list_head free_objs;
+	struct list_entry free_objs;
 	int n_free_objects;
 
 	struct yaffs_obj_list *allocated_obj_list;
@@ -287,7 +287,7 @@ static int yaffs_create_free_objs(struct yaffs_dev *dev, int n_obj)
 struct yaffs_obj *yaffs_alloc_raw_obj(struct yaffs_dev *dev)
 {
 	struct yaffs_obj *obj = NULL;
-	struct list_head *lh;
+	struct list_entry *lh;
 	struct yaffs_allocator *allocator = dev->allocator;
 
 	if (!allocator) {

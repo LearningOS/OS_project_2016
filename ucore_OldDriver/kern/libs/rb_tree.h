@@ -15,6 +15,12 @@ typedef struct rb_tree {
     struct rb_node *nil, *root;
 } rb_tree;
 
+static rb_tree RB_ROOT = {
+    .compare = NULL,
+    .nil = NULL,
+    .root = NULL,
+};
+
 rb_tree *rb_tree_create(int (*compare)(rb_node *node1, rb_node *node2));
 void rb_tree_destroy(rb_tree *tree);
 void rb_insert(rb_tree *tree, rb_node *node);
@@ -29,4 +35,3 @@ rb_node *rb_node_right(rb_tree *tree, rb_node *node);
 void check_rb_tree(void);
 
 #endif /* !__KERN_LIBS_RBTREE_H__ */
-

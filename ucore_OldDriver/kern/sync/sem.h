@@ -16,4 +16,3 @@ void down(semaphore_t *sem);
 bool try_down(semaphore_t *sem);
 
 #endif /* !__KERN_SYNC_SEM_H__ */
-

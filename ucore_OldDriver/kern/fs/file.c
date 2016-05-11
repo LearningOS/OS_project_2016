@@ -334,5 +334,3 @@ file_dup(int fd1, int fd2) {
     filemap_dup(file2, file1);
     return file2->fd;
 }
-
-

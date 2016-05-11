@@ -61,11 +61,11 @@ kern_init(void) {
     fs_init();
 
     // debug-for-Translate
-	kprintf("%s line %d: before intr_enable\n", __func__, __LINE__);
+	// kprintf("%s line %d: before intr_enable\n", __func__, __LINE__);
     intr_enable();              // enable irq interrupt
     //*(int*)(0x00124) = 0x432;
     //asm volatile("divu $1, $1, $1");
     // debug-for-Translate
-	kprintf("%s line %d: before cpu_idle\n", __func__, __LINE__);
+	// kprintf("%s line %d: before cpu_idle\n", __func__, __LINE__);
     cpu_idle();
 }

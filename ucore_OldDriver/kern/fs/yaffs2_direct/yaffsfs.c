@@ -480,7 +480,7 @@ LIST_HEAD(yaffsfs_deviceList); // a empty bi list named yaffsfs_deviceList
  */
 static struct yaffs_dev *yaffsfs_FindDevice(const YCHAR *path, YCHAR **restOfPath)
 {
-	struct list_head *cfg;
+	struct list_entry *cfg;
 	const YCHAR *leftOver;
 	const YCHAR *p;
 	struct yaffs_dev *retval = NULL;
@@ -2757,7 +2757,7 @@ int yaffs_inodecount(const YCHAR *path)
 
 void yaffs_add_device(struct yaffs_dev *dev)
 {
-	struct list_head *cfg;
+	struct list_entry *cfg;
 	/* First check that the device is not in the list. */
 
 	list_for_each(cfg, &yaffsfs_deviceList){
@@ -2799,12 +2799,12 @@ typedef struct
         struct yaffs_obj *dirObj;           /* ptr to directory being searched */
         struct yaffs_obj *nextReturn;       /* obj to be returned by next readddir */
         int offset;
-        struct list_head others;
+        struct list_entry others;
 } yaffsfs_DirectorySearchContext;
 
 
 
-static struct list_head search_contexts;
+static struct list_entry search_contexts;
 
 
 static void yaffsfs_SetDirRewound(yaffsfs_DirectorySearchContext *dsc)
@@ -2835,7 +2835,7 @@ static void yaffsfs_DirAdvance(yaffsfs_DirectorySearchContext *dsc)
                yaffs_list_empty(&dsc->dirObj->variant.dir_variant.children))
                 dsc->nextReturn = NULL;
            else {
-                   struct list_head *next = dsc->nextReturn->siblings.next;
+                   struct list_entry *next = dsc->nextReturn->siblings.next;
 
                    if( next == &dsc->dirObj->variant.dir_variant.children)
                         dsc->nextReturn = NULL; /* end of list */
@@ -2849,8 +2849,8 @@ static void yaffsfs_DirAdvance(yaffsfs_DirectorySearchContext *dsc)
 
 struct yaffs_obj* yaffs_helper_get_nth_direntry(struct yaffs_obj* dir, int n)
 {
-  struct list_head *head =  &(dir->variant.dir_variant.children);
-  struct list_head *ptr = head;
+  struct list_entry *head =  &(dir->variant.dir_variant.children);
+  struct list_entry *ptr = head;
   if(yaffs_list_empty(ptr))
     return NULL;
   do{
@@ -2864,7 +2864,7 @@ struct yaffs_obj* yaffs_helper_get_nth_direntry(struct yaffs_obj* dir, int n)
 static void yaffsfs_RemoveObjectCallback(struct yaffs_obj *obj)
 {
 
-        struct list_head *i;
+        struct list_entry *i;
         yaffsfs_DirectorySearchContext *dsc;
 
         /* if search contexts not initilised then skip */

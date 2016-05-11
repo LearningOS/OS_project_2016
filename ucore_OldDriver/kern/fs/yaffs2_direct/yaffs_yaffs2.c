@@ -550,7 +550,7 @@ static int yaffs2_wr_checkpt_objs(struct yaffs_dev *dev)
 	struct yaffs_checkpt_obj cp;
 	int i;
 	int ok = 1;
-	struct list_head *lh;
+	struct list_entry *lh;
 
 	/* Iterate through the objects in each hash entry,
 	 * dumping them to the checkpointing stream.
@@ -992,7 +992,7 @@ static inline int yaffs2_scan_chunk(struct yaffs_dev *dev,
 		int blk, int chunk_in_block,
 		int *found_chunks,
 		u8 *chunk_data,
-		struct list_head *hard_list,
+		struct list_entry *hard_list,
 		int summary_available)
 {
 	struct yaffs_obj_hdr *oh;

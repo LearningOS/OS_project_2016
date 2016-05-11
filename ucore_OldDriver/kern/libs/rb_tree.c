@@ -63,6 +63,7 @@ bad_tree:
     return NULL;
 }
 
+#define COMPARE(tree, node1, node2)  (((tree))->compare((node1), (node2)))
 /* *
  * FUNC_ROTATE - rotates as described in "Introduction to Algorithm".
  *
@@ -101,8 +102,6 @@ FUNC_ROTATE(rb_right_rotate, right, left);
 
 #undef FUNC_ROTATE
 
-#define COMPARE(tree, node1, node2)                             \
-    ((tree))->compare((node1), (node2))
 
 /* *
  * rb_insert_binary - insert @node to red-black @tree as if it were
@@ -528,3 +527,28 @@ check_rb_tree(void) {
     kfree(all);
 }
 
+static rb_node*
+rb_first(const struct rb_tree *root) {
+    struct rb_node *n;
+    n = root->root;
+    if (!n) {
+        return NULL;
+    }
+    while (n->left) {
+        n = n->left;
+    }
+    return n;
+}
+
+static rb_node*
+rb_last(const struct rb_tree *root) {
+    struct rb_node *n;
+    n = root->root;
+    if (!n) {
+        return NULL;
+    }
+    while (n->right) {
+        n = n->right;
+    }
+    return n;
+}

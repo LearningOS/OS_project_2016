@@ -71,7 +71,7 @@ INITRD_BLOCK_CNT:=800
 FPGA_LD_FLAGS += -S
 MACH_DEF := -DMACH_FPGA
 else
-USER_APPLIST:= pwd cat sh ls forktest yield hello faultreadkernel faultread badarg waitkill pgdir exit sleep
+USER_APPLIST:= pwd cat sh ls forktest yield hello faultreadkernel faultread badarg waitkill pgdir exit sleep touch
 # 2M
 INITRD_BLOCK_CNT:=4000 
 MACH_DEF := -DMACH_QEMU
@@ -190,7 +190,6 @@ $(OBJDIR)/ucore-kernel-initrd:  $(BUILD_DIR) $(TOOL_MKSFS) $(OBJ) $(USER_APP_BIN
 	$(LD) $(FPGA_LD_FLAGS) -nostdlib -n -G 0 -static -T tools/kernel.ld $(OBJ) \
 				 $(USER_OBJDIR)/initrd.img.o -o $@
 	rm -rf $(ROOTFS_DIR)
-	cp obj/ucore-kernel-initrd ../memtrans/.
 
 
 boot/loader.bin: boot/bootasm.S

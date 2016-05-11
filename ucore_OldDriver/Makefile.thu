@@ -5,7 +5,7 @@ SLASH	:= /
 
 V       := @
 
-GCCPREFIX:=mips-sde-elf-
+GCCPREFIX:=/home/donghy/mips_gcc/bin/mips-sde-elf-
 
 # eliminate default suffix rules
 .SUFFIXES: .c .S .h

@@ -126,6 +126,8 @@ sfs_load_inode(struct sfs_fs *sfs, struct inode **node_store, uint32_t ino) {
         goto failed_unlock;
     }
 
+    // kprintf("in %s: ino is %d\n", __func__, ino);
+
     assert(sfs_block_inuse(sfs, ino));
     if ((ret = sfs_rbuf(sfs, din, sizeof(struct sfs_disk_inode), ino, 0)) != 0) {
         goto failed_cleanup_din;
@@ -332,6 +334,29 @@ sfs_dirent_read_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, int slot, stru
     return 0;
 }
 
+static int
+sfs_dirent_write_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, int slot, uint32_t ino, const char *name) {
+	assert(_SFS_INODE_GET_TYPE(sin->din) == SFS_TYPE_DIR && (slot >= 0 && slot <= sin->din->blocks));
+	struct sfs_disk_entry *entry;
+	if ((entry = kmalloc(sizeof(struct sfs_disk_entry))) == NULL) {
+		return -1;
+	}
+	memset(entry, 0, sizeof(struct sfs_disk_entry));
+
+	if (ino != 0) {
+		assert(strlen(name) <= SFS_MAX_FNAME_LEN);
+		entry->ino = ino, strcpy(entry->name, name);
+	}
+	int ret;
+	if ((ret = sfs_bmap_load_nolock(sfs, sin, slot, &ino)) != 0) {
+		goto wirte_out;
+	}
+	assert(sfs_block_inuse(sfs, ino));
+	ret = sfs_wbuf(sfs, entry, sizeof(struct sfs_disk_entry), ino, 0);
+wirte_out:
+	kfree(entry);
+	return ret;
+}
 
 #define sfs_dirent_link_nolock_check(sfs, sin, slot, lnksin, name)                  \
     do {                                                                            \
@@ -476,7 +501,7 @@ sfs_io_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, void *buf, off_t offset
     uint32_t nblks = endpos / SFS_BLKSIZE - blkno;
 
   //LAB8:EXERCISE1 2009010989 HINT: call sfs_bmap_load_nolock, sfs_rbuf, sfs_rblock,etc. read different kind of blocks in file
-    
+
     if((blkoff = offset % SFS_BLKSIZE)!= 0) {
         if(nblks){
           size = SFS_BLKSIZE - blkoff;
@@ -571,6 +596,20 @@ sfs_fsync(struct inode *node) {
     struct sfs_fs *sfs = fsop_info(vop_fs(node), sfs);
     struct sfs_inode *sin = vop_info(node, sfs_inode);
     int ret = 0;
+
+
+    // if (sfs->super_dirty) {
+    //     lock_sfs_fs(sfs);
+    //     if (sfs->super_dirty) {
+    //         sfs->super_dirty = 0;
+    //         if ((ret = sfs_wbuf(sfs, sfs->freemap, sizeof(uint32_t) * 400, 1, 0)) != 0) {
+    //             // sfs_wbuf(struct sfs_fs *sfs, void *buf, size_t len, uint32_t blkno, off_t offset)
+    //             sfs->super_dirty = 1;
+    //         }
+    //     }
+    //     unlock_sfs_fs(sfs);
+    // }
+
     if (sin->dirty) {
         lock_sin(sin);
         {
@@ -583,6 +622,8 @@ sfs_fsync(struct inode *node) {
         }
         unlock_sin(sin);
     }
+    // kprintf("in %s: %d is %s and addr. of sfs is 0x%08x addr. of freemap is 0x%08x\n",
+    // __func__, 436, sfs_block_inuse(sfs, 436)?"used":"free", sfs, sfs->freemap);
     return ret;
 }
 
@@ -829,6 +870,152 @@ sfs_lookup(struct inode *node, char *path, struct inode **node_store) {
     return 0;
 }
 
+static struct sfs_disk_inode *
+alloc_disk_inode(unsigned short type) {
+    struct sfs_disk_inode *din = kmalloc(sizeof(struct sfs_disk_inode));
+    din->size = 0;
+    din->__type__ = type;
+    din->__nlinks__ = 0;
+    din->blocks = 0;
+    memset(din->direct, 0, SFS_NDIRECT * sizeof(uint32_t));
+    din->indirect = 0;
+}
+
+static int
+sfs_create(struct inode *node, const char *name, bool excl, struct inode **node_store) {
+    kprintf("ready to create a file\n");
+    if (strlen(name) > SFS_MAX_FNAME_LEN) {
+        return -1;
+    }
+    // sfs_create_inode(struct sfs_fs *sfs, struct sfs_disk_inode *din, uint32_t ino, struct inode **node_store)
+    struct sfs_fs *sfs = fsop_info(vop_fs(node), sfs);
+    struct sfs_inode *sin = vop_info(node, sfs_inode);
+    int ret;
+    // sfs_create_inode(struct sfs_fs *sfs, struct sfs_disk_inode *din, uint32_t ino, struct inode **node_store)
+    struct inode *node_tmp = NULL;
+    int empty_slot = -1;
+    lock_sfs_fs(sfs);
+    // sfs_block_alloc(struct sfs_fs *sfs, uint32_t *ino_store)
+    sfs_dirent_search_nolock(sfs, sin, name, node_tmp, NULL, &empty_slot);
+    if (node_tmp) {
+        node_store = node_tmp;
+    } else {
+        if (empty_slot < 0) {
+            kprintf("no slot\n");
+            return -1;
+        }
+        struct sfs_disk_inode *din = alloc_disk_inode(SFS_TYPE_FILE);
+        int ino;
+        sfs_block_alloc(sfs, &ino);
+        if (sfs_block_inuse(sfs, ino)) {
+            kprintf("be sure use\n");
+        } else {
+            kprintf("not used\n");
+        }
+        sfs_create_inode(sfs, din, ino, &node_tmp);
+        ++ din->__nlinks__;
+        sfs_set_links(sfs, vop_info(node_tmp, sfs_inode));
+        kprintf("0x%08x\n", node_tmp);
+        // sfs_namefile(struct inode *node, struct iobuf *iob)
+        // sfs_dirent_write_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, int slot, uint32_t ino, const char *name)
+        sfs_dirent_write_nolock(sfs, sin, empty_slot, ino, name);
+        sin->dirty = 1;
+        vop_info(node_tmp, sfs_inode)->dirty = 1;
+        sfs->super_dirty = 1;
+        // if ((ret = sfs_bmap_load_nolock(sfs, sin, slot, &ino)) != 0) {
+        //     return ret;
+        // }
+        // assert(sfs_block_inuse(sfs, ino));
+        kprintf("ino is %d\n", ino);
+        kprintf("empty slot is %d\n", empty_slot);
+        *node_store = node_tmp;
+    }
+    unlock_sfs_fs(sfs);
+    // sfs_create_inode(sfs, struct sfs_disk_inode *din, uint32_t ino, struct inode **node_store)
+    return 0;
+}
+
+// static int
+// sfs_dirent_search_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, const char *name, uint32_t *ino_store, int *slot, int *empty_slot) {
+//     assert(strlen(name) <= SFS_MAX_FNAME_LEN);
+//     struct sfs_disk_entry *entry;
+//     if ((entry = kmalloc(sizeof(struct sfs_disk_entry))) == NULL) {
+//         return -E_NO_MEM;
+//     }
+//
+// #define set_pvalue(x, v)            do { if ((x) != NULL) { *(x) = (v); } } while (0)
+//     int ret, i, nslots = sin->din->blocks;
+//     set_pvalue(empty_slot, nslots);
+//     for (i = 0; i < nslots; i ++) {
+//         if ((ret = sfs_dirent_read_nolock(sfs, sin, i, entry)) != 0) {
+//             goto out;
+//         }
+//         if (entry->ino == 0) {
+//             set_pvalue(empty_slot, i);
+//             continue ;
+//         }
+//         if (strcmp(name, entry->name) == 0) {
+//             set_pvalue(slot, i);
+//             set_pvalue(ino_store, entry->ino);
+//             goto out;
+//         }
+//     }
+// #undef set_pvalue
+//     ret = -E_NOENT;
+// out:
+//     kfree(entry);
+//     return ret;
+// }
+
+// int
+// sfs_load_inode(struct sfs_fs *sfs, struct inode **node_store, uint32_t ino) {
+//     lock_sfs_fs(sfs);
+//     struct inode *node;
+//     if ((node = lookup_sfs_nolock(sfs, ino)) != NULL) {
+//         goto out_unlock;
+//     }
+//      通过ino找到inode
+//
+//     int ret = -E_NO_MEM;
+//     struct sfs_disk_inode *din;
+//     if ((din = kmalloc(sizeof(struct sfs_disk_inode))) == NULL) {
+//         goto failed_unlock;
+//     }
+//     造出sfs_disk_inode *din
+//
+//     assert(sfs_block_inuse(sfs, ino));
+//     // sfs_rbuf(struct sfs_fs *sfs, void *buf, size_t len, uint32_t blkno, off_t offset)
+//     if ((ret = sfs_rbuf(sfs, din, sizeof(struct sfs_disk_inode), ino, 0)) != 0) {
+//         goto failed_cleanup_din;
+//     }
+//     应该是初始化, 稍微查一下rbuf的参数语义
+//
+//     assert(_SFS_INODE_GET_NLINKS(din) != 0);
+//     if ((ret = sfs_create_inode(sfs, din, ino, &node)) != 0) {
+//         goto failed_cleanup_din;
+//     }
+//     创建inode
+//     sfs_set_links(sfs, vop_info(node, sfs_inode));
+//     加入链中
+//
+// out_unlock:
+//     unlock_sfs_fs(sfs);
+//     *node_store = node;
+//     return 0;
+//
+// failed_cleanup_din:
+//     kfree(din);
+// failed_unlock:
+//     unlock_sfs_fs(sfs);
+//     return ret;
+// }
+
+static int
+sfs_dir_create(struct inode *node, const char *name, bool excl, struct inode **node_store) {
+    kprintf("ready to create a dir\n");
+    return 0;
+}
+
 static const struct inode_ops sfs_node_dirops = {
     .vop_magic                      = VOP_MAGIC,
     .vop_open                       = sfs_opendir,
@@ -840,6 +1027,8 @@ static const struct inode_ops sfs_node_dirops = {
     .vop_reclaim                    = sfs_reclaim,
     .vop_gettype                    = sfs_gettype,
     .vop_lookup                     = sfs_lookup,
+    // sfs expands
+    .vop_create                     = sfs_create,
 };
 
 static const struct inode_ops sfs_node_fileops = {
@@ -855,4 +1044,3 @@ static const struct inode_ops sfs_node_fileops = {
     .vop_tryseek                    = sfs_tryseek,
     .vop_truncate                   = sfs_truncfile,
 };
-

@@ -6,7 +6,7 @@
 #include <sfs.h>
 #include <atomic.h>
 #include <assert.h>
-#include <yaffs_vfs.h>
+// #include <yaffs_vfs.h>
 
 struct stat;
 struct iobuf;
@@ -32,12 +32,12 @@ struct inode {
         struct device __device_info;
         struct sfs_inode __sfs_inode_info;
         // Transplant
-        struct yaffs2_inode __yaffs2_inode_info;
+        // struct yaffs2_inode __yaffs2_inode_info;
     } in_info;
     enum {
         inode_type_device_info = 0x1234,
         inode_type_sfs_inode_info,
-        inode_type_yaffs2_inode_info,
+        // inode_type_yaffs2_inode_info,
     } in_type;
     atomic_t ref_count;
     atomic_t open_count;

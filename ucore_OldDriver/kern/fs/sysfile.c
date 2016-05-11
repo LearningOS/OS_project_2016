@@ -300,4 +300,3 @@ int
 sysfile_mkfifo(const char *__name, uint32_t open_flags) {
 	return -E_UNIMP;
 }
-
