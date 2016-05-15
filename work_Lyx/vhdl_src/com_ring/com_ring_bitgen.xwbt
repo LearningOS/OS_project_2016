@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=F:\OldDriver_OS\vhdl_src\com_ring\com_ring.ncd
-OUTFILE=F:\OldDriver_OS\vhdl_src\com_ring\com_ring.bit
-FAMILY=Spartan6
-PART=xc6slx100-2fgg676
-WORKINGDIR=F:\OldDriver_OS\vhdl_src\com_ring
-LICENSE=ISE
-USER_INFO=135256_15690819_173552794_661

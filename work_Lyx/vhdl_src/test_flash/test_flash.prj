@@ -1,3 +1,0 @@
-vhdl work "flash.vhd"
-vhdl work "flash32.vhd"
-vhdl work "test_flash.vhd"

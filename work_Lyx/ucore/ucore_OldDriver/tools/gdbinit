@@ -1,3 +1,0 @@
-file obj/ucore-kernel-initrd
-target remote :1235
-break kern_init

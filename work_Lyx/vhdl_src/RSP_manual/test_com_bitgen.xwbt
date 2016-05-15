@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=F:\OldDriver_OS\vhdl_src\test_com\test_com.ncd
-OUTFILE=F:\OldDriver_OS\vhdl_src\test_com\test_com.bit
-FAMILY=Spartan6
-PART=xc6slx100-2fgg676
-WORKINGDIR=F:\OldDriver_OS\vhdl_src\test_com
-LICENSE=ISE
-USER_INFO=135256_15690819_173552794_661
