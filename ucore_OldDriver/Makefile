@@ -6,7 +6,8 @@ ON_FPGA :=n
 
 V       := @
 
-GCCPREFIX:=/home/donghy/mips_gcc/bin/mips-sde-elf-
+#GCCPREFIX:=/home/myucore/mips_gcc/bin/mips-sde-elf-
+#GCCPREFIX:=/home/donghy/mips_gcc/bin/mips-sde-elf-
 #GCCPREFIX ?= /home/guest/cpu/build-gcc/mips_gcc/bin/mips-sde-elf-
 
 # eliminate default suffix rules
@@ -52,7 +53,7 @@ SRCDIR  := kern
 DEPDIR  := dep
 
 
-MODULES   := fetchrun init libs debug driver trap mm sync process schedule syscall fs fs/vfs fs/sfs fs/devs
+MODULES   := fetchrun init libs debug driver trap mm sync process schedule syscall fs fs/vfs fs/sfs fs/devs ftp ftp/libs
 SRC_DIR   := $(addprefix $(SRCDIR)/,$(MODULES))
 BUILD_DIR := $(addprefix $(OBJDIR)/,$(MODULES))
 DEP_DIR   := $(addprefix $(DEPDIR)/,$(MODULES))
@@ -67,13 +68,13 @@ INCLUDES  += -I$(SRCDIR)/include
 
 ifeq  ($(ON_FPGA), y)
 USER_APPLIST:= sh #ppt flappybird snake ls cat forktest
-INITRD_BLOCK_CNT:=800 
+INITRD_BLOCK_CNT:=800
 FPGA_LD_FLAGS += -S
 MACH_DEF := -DMACH_FPGA
 else
-USER_APPLIST:= pwd cat sh ls forktest yield hello faultreadkernel faultread badarg waitkill pgdir exit sleep touch fwrite
+USER_APPLIST:= pwd cat sh ls forktest yield hello faultreadkernel faultread badarg waitkill pgdir exit sleep #touch fwrite ftp
 # 2M
-INITRD_BLOCK_CNT:=4000 
+INITRD_BLOCK_CNT:=4000
 MACH_DEF := -DMACH_QEMU
 endif
 
@@ -100,7 +101,7 @@ MAKEDEPEND = $(CLANG) -M $(CFLAGS) $(INCLUDES) -o $(DEPDIR)/$*.d $<
 #vpath %.c $(SRC_DIR)
 #vpath %.S $(SRC_DIR)
 
-.PHONY: all checkdirs clean 
+.PHONY: all checkdirs clean
 
 all: checkdirs boot/loader.bin obj/ucore-kernel-initrd
 
@@ -119,7 +120,7 @@ obj/ucore-kernel-piggy: $(BUILD_DIR)  $(OBJ) $(USER_APP_BINS) tools/kernel.ld
 $(DEPDIR)/%.d: $(SRCDIR)/%.c
 	@echo DEP $<
 	@set -e; rm -f $@; \
-		$(CC) -MM -MT "$(OBJDIR)/$*.o $@" $(CFLAGS) $(INCLUDES) $< > $@; 
+		$(CC) -MM -MT "$(OBJDIR)/$*.o $@" $(CFLAGS) $(INCLUDES) $< > $@;
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) -c -mips1 $(INCLUDES) $(CFLAGS) $(MACH_DEF) $<  -o $@
