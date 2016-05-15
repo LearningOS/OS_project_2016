@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=F:\OldDriver_OS\vhdl_src\test_com\impact.xsl
+OUTFILE=F:\OldDriver_OS\vhdl_src\test_com\impact.xsl
+FAMILY=Single
+PART=Single
+WORKINGDIR=F:\OldDriver_OS\vhdl_src\test_com
+LICENSE=iMPACT
+USER_INFO=iMPACT

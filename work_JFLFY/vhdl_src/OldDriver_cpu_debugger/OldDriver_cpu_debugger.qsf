@@ -1,0 +1,93 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2009 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.0 Build 132 02/25/2009 SJ Web Edition
+# Date created = 05:47:05  May 15, 2016
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		OldDriver_cpu_debugger_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Stratix III"
+set_global_assignment -name DEVICE EP3SE50F484I3
+set_global_assignment -name TOP_LEVEL_ENTITY TOP2
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 9.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "05:47:05  MAY 15, 2016"
+set_global_assignment -name LAST_QUARTUS_VERSION 9.0
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name VHDL_FILE ALU.vhd
+set_global_assignment -name VERILOG_FILE async.v
+set_global_assignment -name VHDL_FILE clkGen.vhd
+set_global_assignment -name VHDL_FILE clkGen_exdes.vhd
+set_global_assignment -name VHDL_FILE "clkGen_tb 2.vhd"
+set_global_assignment -name VHDL_FILE clkGen_tb.vhd
+set_global_assignment -name VHDL_FILE com.vhd
+set_global_assignment -name VHDL_FILE comclk.vhd
+set_global_assignment -name VHDL_FILE comclk_exdes.vhd
+set_global_assignment -name VHDL_FILE "comclk_tb 2.vhd"
+set_global_assignment -name VHDL_FILE comclk_tb.vhd
+set_global_assignment -name VHDL_FILE consRisk.vhd
+set_global_assignment -name VHDL_FILE controller.vhd
+set_global_assignment -name VHDL_FILE CP0.vhd
+set_global_assignment -name VHDL_FILE cpld.vhd
+set_global_assignment -name VHDL_FILE debug.vhd
+set_global_assignment -name VHDL_FILE defines.vhd
+set_global_assignment -name VHDL_FILE exceptionMod.vhd
+set_global_assignment -name VHDL_FILE EXMEM.vhd
+set_global_assignment -name VHDL_FILE exSelecter.vhd
+set_global_assignment -name VHDL_FILE flash.vhd
+set_global_assignment -name VHDL_FILE foreBranch.vhd
+set_global_assignment -name VHDL_FILE HiLo.vhd
+set_global_assignment -name VHDL_FILE IDEX.vhd
+set_global_assignment -name VHDL_FILE IFID.vhd
+set_global_assignment -name VHDL_FILE insFetcher.vhd
+set_global_assignment -name VHDL_FILE light_controller.vhd
+set_global_assignment -name VHDL_FILE MEMWB.vhd
+set_global_assignment -name VHDL_FILE MMU.vhd
+set_global_assignment -name VHDL_FILE multi.vhd
+set_global_assignment -name VHDL_FILE ps2_controller.vhd
+set_global_assignment -name VHDL_FILE ps2_module.vhd
+set_global_assignment -name VHDL_FILE ram.vhd
+set_global_assignment -name VHDL_FILE registers.vhd
+set_global_assignment -name VHDL_FILE riskJudge.vhd
+set_global_assignment -name VHDL_FILE rom.vhd
+set_global_assignment -name VHDL_FILE TLB.vhd
+set_global_assignment -name VHDL_FILE TOP2.vhd
+set_global_assignment -name VHDL_FILE VGA_module.vhd
+set_global_assignment -name VHDL_FILE wbController.vhd
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.1V
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

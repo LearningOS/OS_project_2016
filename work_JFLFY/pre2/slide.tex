@@ -1,0 +1,102 @@
+﻿\documentclass[11pt]{beamer}
+\usepackage{amsmath,amssymb}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xeCJK}
+\usepackage{beamerthemeshadow}	%阴影样式
+\usepackage{xunicode}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{multirow}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{booktabs}
+\setCJKmainfont{Hiragino Sans GB W3}
+
+\setbeamertemplate{navigation symbols}{}	%修正工具图样
+\useoutertheme{infolines}	%显示作者
+\usetheme{Berkeley}
+
+\title{操作系统 \quad 第二次报告}
+\author{李宇轩}
+\date{\today}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{gdb}
+
+\begin{frame}
+\frametitle{实验目标描述}
+\begin{itemize}
+\item 完成一个硬件模块的debugger，可以和gdb通讯
+\item 硬件相关的杂事
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{已有相关工作介绍}
+\begin{itemize}
+\item 张宇翔组的naive\_mips
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{小组成员分工}
+\begin{itemize}
+\item 硬件（串口，flash），gdb debug
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{实现方案·串口}
+\begin{itemize}
+\item 利用边沿同步和脉冲同步做异步时钟域同步
+\item 可以运行在460800的速率下，和回环测试达到的效率一致
+\item 通过连续收发3个小时的测试
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{实现方案·Flash}
+\begin{itemize}
+\item 实现了基本的nor\_flash操作，并为了单元测试用HDL封装一些基本操作
+\item 通过了读写测试，稳定性测试，效率和datasheet上描述的一致
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{实现方案·gdb debugger}
+\begin{itemize}
+\item 调研，进一步，工业界标准-JTAG、Gdb Server
+\item 实验，qemu、naive\_mips server手动交互
+\item 基础，流水线暂停逻辑，控制MMU
+\item 扩展，debug中断，可以执行指令
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{演示}
+\end{frame}
+
+\begin{frame}
+\frametitle{后续}
+\begin{itemize}
+\item 如有必要对Flash模块的接口进行一定的修改
+\item 支持软中断，支持从串口读取指令执行
+\item 修复源码级调试的存在的问题
+\item 解决虚实地址问题
+\item 向mips的EJTAG标准靠拢
+\end{itemize}
+\end{frame}
+
+\end{document}
