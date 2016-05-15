@@ -1,0 +1,29 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:24:36 MDT 2013
+# Start of session at: Sun Dec 20 17:25:16 2015
+# Process ID: 8308
+# Log file: /home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/planAhead_run_1/planAhead.log
+# Journal file: /home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source /home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/pa.fromHdl.tcl
+# create_project -name Opt_CPU -dir "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/planAhead_run_1" -part xc6slx100fgg676-2
+# set_param project.pinAheadLayout yes
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [Common 17-344] 'source' was cancelled
+exit
+ERROR: [#UNDEF] *** Exception: ui.h.b: Found deleted key in HTclEventBroker. Verify if the classes listed here call cleanup()
+HTclEvent: SIGNAL_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_CORE_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: DEBUG_PORT_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: SIGNAL_BUS_MODIFY   Classes: ui.views.aR 
+ (See /home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/planAhead_pid8308.debug)
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Sun Dec 20 17:26:03 2015...
+INFO: [Common 17-83] Releasing license: PlanAhead

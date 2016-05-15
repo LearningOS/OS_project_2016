@@ -1,0 +1,39 @@
+INFO:sim:172 - Generating IP...
+Resolving generics for 'ipcore_clk'...
+Applying external generics to 'ipcore_clk'...
+Delivering associated files for 'ipcore_clk'...
+WARNING:sim - Component clk_wiz_v3_6 does not have a valid model name for VHDL
+   synthesis
+Delivering EJava files for 'ipcore_clk'...
+Delivered 3 files into directory
+F:/vhdl/OldDriver_CPU/src/test_com_stable/ipcore_dir/tmp/_cg/ipcore_clk
+Delivered 1 file into directory
+F:/vhdl/OldDriver_CPU/src/test_com_stable/ipcore_dir/tmp/_cg/ipcore_clk
+Generating ASY schematic symbol...
+Loading device for application Rf_Device from file '6slx100.nph' in environment
+Z:\14.7\ISE_DS\ISE\.
+INFO:sim:949 - Finished generation of ASY schematic symbol.
+Generating SYM schematic symbol for 'ipcore_clk'...
+Generating ISE project...
+XCO file found: ipcore_clk.xco
+XMDF file found: ipcore_clk_xmdf.tcl
+Adding ipcore_clk.asy -view all -origin_type imported
+Adding ipcore_clk.ucf -view all -origin_type created
+Adding ipcore_clk.vhd -view all -origin_type created
+INFO:HDLCompiler:1061 - Parsing VHDL file
+   "F:/vhdl/OldDriver_CPU/src/test_com_stable/ipcore_dir/tmp/_cg/ipcore_clk.vhd"
+   into library work
+INFO:ProjectMgmt - Parsing design hierarchy completed successfully.
+Adding ipcore_clk.vho -view all -origin_type imported
+INFO:TclTasksC:2116 - The automatic calculation of top has been turned-off.
+   Please set the new top explicitly by running the "project set top" command.
+   To re-calculate the new top automatically, set the "Auto Implementation Top"
+   property to true.
+Top level has been set to "/ipcore_clk"
+Generating README file...
+Generating FLIST file...
+INFO:sim:948 - Finished FLIST file generation.
+Launching README viewer...
+Moving files to output directory...
+Finished moving files to output directory
+Wrote CGP file for project 'ipcore_clk'.

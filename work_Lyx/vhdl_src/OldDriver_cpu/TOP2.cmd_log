@@ -1,0 +1,371 @@
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -bm VGA_module.bmm -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -bm VGA_module.bmm -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -bm VGA_module.bmm -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf Opt_CPU.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Opt_CPU.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "/home/donghy/document/grade_3_fall/union/absolutely_new/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_OPT_v2/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir place -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir place -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir place -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir place -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir place -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 1 -xt 0 -r 4 -global_opt speed -equivalent_register_removal on -mt 2 -ir place -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt off TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 5 -xt 2 -r 4 -global_opt speed -equivalent_register_removal off -mt 2 -ir off -ignore_keep_hierarchy -pr b -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 5 -xt 2 -r 4 -global_opt speed -equivalent_register_removal off -mt 2 -ir off -ignore_keep_hierarchy -pr b -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt 4 TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash_OPT/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash_OPT/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 10 -xt 5 -r 8 -global_opt speed -equivalent_register_removal off -mt 2 -ir off -ignore_keep_hierarchy -pr b -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt 4 -k TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash_OPT/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash_OPT/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol std -t 10 -xt 5 -r 8 -global_opt speed -equivalent_register_removal off -mt 2 -ir off -ignore_keep_hierarchy -pr b -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol std -mt 4 TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 
+xst -intstyle ise -ifn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash_OPT/TOP2.xst" -ofn "C:/CPU/CPU_OS_OPT_v2/CPU_OS_flash_OPT/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 10 -xt 5 -r 4 -global_opt speed -equivalent_register_removal off -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt 4 TOP2_map.ncd TOP2.ncd TOP2.pcf 
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/OldDriver_cpu/TOP2.xst" -ofn "F:/OldDriver_OS/vhdl_src/OldDriver_cpu/TOP2.syr" 
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/OldDriver_cpu/TOP2.xst" -ofn "F:/OldDriver_OS/vhdl_src/OldDriver_cpu/TOP2.syr" 
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/OldDriver_cpu/TOP2.xst" -ofn "F:/OldDriver_OS/vhdl_src/OldDriver_cpu/TOP2.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc TOP2.ucf -p xc6slx100-fgg676-2 TOP2.ngc TOP2.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt on -ol high -xe c -t 10 -xt 5 -r 4 -global_opt speed -equivalent_register_removal off -mt 2 -ir off -ignore_keep_hierarchy -pr b -x -lc off -power off -o TOP2_map.ncd TOP2.ngd TOP2.pcf 
+par -w -intstyle ise -ol high -xe c -mt 4 TOP2_map.ncd TOP2.ncd TOP2.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf 
+bitgen -intstyle ise -f TOP2.ut TOP2.ncd 

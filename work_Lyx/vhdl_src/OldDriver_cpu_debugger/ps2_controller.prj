@@ -1,0 +1,3 @@
+vhdl work "ps2_module.vhd"
+vhdl work "light_controller.vhd"
+vhdl work "ps2_controller.vhd"

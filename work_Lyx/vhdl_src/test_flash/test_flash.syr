@@ -1,0 +1,777 @@
+Release 14.7 - xst P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.16 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Reading design: test_flash.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "test_flash.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "test_flash"
+Output Format                      : NGC
+Target Device                      : xc6slx100-2-fgg676
+
+---- Source Options
+Top Module Name                    : test_flash
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\flash.vhd" into library work
+Parsing entity <flash>.
+Parsing architecture <behavioral> of entity <flash>.
+Parsing VHDL file "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\flash32.vhd" into library work
+Parsing entity <flash32>.
+Parsing architecture <behavioral> of entity <flash32>.
+Parsing VHDL file "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\test_flash.vhd" into library work
+Parsing entity <test_flash>.
+Parsing architecture <behavioral> of entity <test_flash>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <test_flash> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <flash32> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <flash> (architecture <behavioral>) from library <work>.
+INFO:HDLCompiler:679 - "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\flash32.vhd" Line 191. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\flash32.vhd" Line 225. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\flash32.vhd" Line 262. Case statement is complete. others clause is never selected
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <test_flash>.
+    Related source file is "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\test_flash.vhd".
+INFO:Xst:3210 - "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\test_flash.vhd" line 73: Output port <flash_state> of the instance <u0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\test_flash.vhd" line 73: Output port <flash32_state> of the instance <u0> is unconnected or connected to loadless signal.
+    Found 4-bit register for signal <state>.
+    Found 32-bit register for signal <statei>.
+    Found 1-bit register for signal <is_read>.
+    Found 1-bit register for signal <is_write>.
+    Found 1-bit register for signal <is_erase>.
+    Found 1-bit register for signal <busy0>.
+    Found 32-bit register for signal <addr>.
+    Found 32-bit register for signal <data_in>.
+    Found 32-bit register for signal <count>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 15                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk (falling_edge)                             |
+    | Reset              | rst (negative)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 0000                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 32-bit adder for signal <count[31]_GND_6_o_add_0_OUT> created at line 66.
+    Found 32-bit adder for signal <statei[31]_GND_6_o_add_21_OUT> created at line 140.
+    Found 32-bit subtractor for signal <GND_6_o_GND_6_o_sub_19_OUT<31:0>> created at line 136.
+    Found 1-bit 32-to-1 multiplexer for signal <clk> created at line 70.
+    Found 32-bit comparator greater for signal <GND_6_o_statei[31]_LessThan_18_o> created at line 136
+    Found 32-bit comparator equal for signal <n0019> created at line 136
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred 132 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred  13 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <test_flash> synthesized.
+
+Synthesizing Unit <flash32>.
+    Related source file is "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\flash32.vhd".
+    Found 32-bit register for signal <addr_f16>.
+    Found 32-bit register for signal <data_out_reg>.
+    Found 5-bit register for signal <state>.
+    Found 3-bit register for signal <state_cnt>.
+    Found 16-bit register for signal <data16_in>.
+    Found 1-bit register for signal <is_write_f16>.
+    Found 1-bit register for signal <busy_reg>.
+    Found 1-bit register for signal <is_read_f16>.
+    Found finite state machine <FSM_1> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 14                                             |
+    | Transitions        | 32                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk (falling_edge)                             |
+    | Reset              | rst (negative)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00000                                          |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 3-bit adder for signal <state_cnt[2]_GND_7_o_add_82_OUT> created at line 252.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  86 D-type flip-flop(s).
+	inferred  78 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <flash32> synthesized.
+
+Synthesizing Unit <flash>.
+    Related source file is "\\vboxsrv\virtualspace\OldDriver_OS\vhdl_src\test_flash\flash.vhd".
+WARNING:Xst:647 - Input <addr<0:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <addr<31:23>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit register for signal <flash_control_we>.
+    Found 1-bit register for signal <flash_control_oe>.
+    Found 3-bit register for signal <state>.
+    Found 16-bit register for signal <state[2]_dff_17_OUT>.
+    Found 23-bit register for signal <flash_addr>.
+    Found 16-bit register for signal <data_out>.
+    Found 1-bit register for signal <state[2]_clk_DFF_77>.
+    Found 1-bit register for signal <state[2]_clk_DFF_78>.
+    Found 1-bit register for signal <state[2]_clk_DFF_79>.
+    Found 1-bit register for signal <state[2]_clk_DFF_80>.
+    Found 1-bit register for signal <state[2]_clk_DFF_81>.
+    Found 1-bit register for signal <state[2]_clk_DFF_82>.
+    Found 1-bit register for signal <state[2]_clk_DFF_83>.
+    Found 1-bit register for signal <state[2]_clk_DFF_84>.
+    Found 1-bit register for signal <state[2]_clk_DFF_85>.
+    Found 1-bit register for signal <state[2]_clk_DFF_86>.
+    Found 1-bit register for signal <state[2]_clk_DFF_87>.
+    Found 1-bit register for signal <state[2]_clk_DFF_88>.
+    Found 1-bit register for signal <state[2]_clk_DFF_89>.
+    Found 1-bit register for signal <state[2]_clk_DFF_90>.
+    Found 1-bit register for signal <state[2]_clk_DFF_91>.
+    Found 1-bit register for signal <state[2]_clk_DFF_92>.
+    Found finite state machine <FSM_2> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 7                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk (falling_edge)                             |
+    | Reset              | rst (negative)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 000                                            |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit tristate buffer for signal <flash_data<15>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<14>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<13>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<12>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<11>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<10>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<9>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<8>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<7>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<6>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<5>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<4>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<3>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<2>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<1>> created at line 42
+    Found 1-bit tristate buffer for signal <flash_data<0>> created at line 42
+    Summary:
+	inferred  73 D-type flip-flop(s).
+	inferred  15 Multiplexer(s).
+	inferred  16 Tristate(s).
+	inferred   1 Finite State Machine(s).
+Unit <flash> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 4
+ 3-bit adder                                           : 1
+ 32-bit adder                                          : 2
+ 32-bit subtractor                                     : 1
+# Registers                                            : 36
+ 1-bit register                                        : 25
+ 16-bit register                                       : 3
+ 23-bit register                                       : 1
+ 3-bit register                                        : 1
+ 32-bit register                                       : 6
+# Comparators                                          : 2
+ 32-bit comparator equal                               : 1
+ 32-bit comparator greater                             : 1
+# Multiplexers                                         : 106
+ 1-bit 2-to-1 multiplexer                              : 42
+ 1-bit 32-to-1 multiplexer                             : 1
+ 16-bit 2-to-1 multiplexer                             : 14
+ 3-bit 2-to-1 multiplexer                              : 9
+ 32-bit 2-to-1 multiplexer                             : 40
+# Tristates                                            : 16
+ 1-bit tristate buffer                                 : 16
+# FSMs                                                 : 3
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <state[2]_clk_DFF_77> in Unit <u0> is equivalent to the following 15 FFs/Latches, which will be removed : <state[2]_clk_DFF_78> <state[2]_clk_DFF_79> <state[2]_clk_DFF_80> <state[2]_clk_DFF_83> <state[2]_clk_DFF_81> <state[2]_clk_DFF_82> <state[2]_clk_DFF_84> <state[2]_clk_DFF_85> <state[2]_clk_DFF_86> <state[2]_clk_DFF_87> <state[2]_clk_DFF_90> <state[2]_clk_DFF_88> <state[2]_clk_DFF_89> <state[2]_clk_DFF_91> <state[2]_clk_DFF_92> 
+WARNING:Xst:1710 - FF/Latch <flash_addr_0> (without init value) has a constant value of 0 in block <u0>. This FF/Latch will be trimmed during the optimization process.
+
+Synthesizing (advanced) Unit <test_flash>.
+The following registers are absorbed into counter <count>: 1 register on signal <count>.
+Unit <test_flash> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 3
+ 3-bit adder                                           : 1
+ 32-bit adder                                          : 1
+ 32-bit subtractor                                     : 1
+# Counters                                             : 1
+ 32-bit up counter                                     : 1
+# Registers                                            : 259
+ Flip-Flops                                            : 259
+# Comparators                                          : 2
+ 32-bit comparator equal                               : 1
+ 32-bit comparator greater                             : 1
+# Multiplexers                                         : 106
+ 1-bit 2-to-1 multiplexer                              : 42
+ 1-bit 32-to-1 multiplexer                             : 1
+ 16-bit 2-to-1 multiplexer                             : 14
+ 3-bit 2-to-1 multiplexer                              : 9
+ 32-bit 2-to-1 multiplexer                             : 40
+# FSMs                                                 : 3
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <flash_addr_0> (without init value) has a constant value of 0 in block <flash>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <state[2]_clk_DFF_77> in Unit <flash> is equivalent to the following 15 FFs/Latches, which will be removed : <state[2]_clk_DFF_78> <state[2]_clk_DFF_79> <state[2]_clk_DFF_80> <state[2]_clk_DFF_83> <state[2]_clk_DFF_81> <state[2]_clk_DFF_82> <state[2]_clk_DFF_84> <state[2]_clk_DFF_85> <state[2]_clk_DFF_86> <state[2]_clk_DFF_87> <state[2]_clk_DFF_90> <state[2]_clk_DFF_88> <state[2]_clk_DFF_89> <state[2]_clk_DFF_91> <state[2]_clk_DFF_92> 
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <FSM_0> on signal <state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0000  | 000
+ 0001  | 001
+ 0010  | 011
+ 1111  | 010
+ 1110  | 110
+-------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <u0/FSM_1> on signal <state[1:5]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00000 | 00000
+ 00010 | 00010
+ 01000 | 01000
+ 10000 | 10000
+ 00011 | 00011
+ 00100 | 00100
+ 00101 | 00101
+ 01001 | 01001
+ 01010 | 01010
+ 01100 | 01100
+ 01101 | 01101
+ 01110 | 01110
+ 10001 | 10001
+ 10010 | 10010
+-------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <u0/u0/FSM_2> on signal <state[1:2]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 00
+ 010   | 01
+ 001   | 10
+ 111   | 11
+-------------------
+WARNING:Xst:2677 - Node <addr_0> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <addr_23> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <addr_24> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <addr_25> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <addr_26> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <addr_27> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <addr_28> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <addr_29> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <addr_30> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <addr_31> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_31> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_30> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_29> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_28> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_27> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_26> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_25> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_24> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_23> of sequential type is unconnected in block <test_flash>.
+WARNING:Xst:2677 - Node <u0/addr_f16_0> of sequential type is unconnected in block <test_flash>.
+
+Optimizing unit <test_flash> ...
+WARNING:Xst:1710 - FF/Latch <addr_1> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_16> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_18> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_19> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_20> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_21> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_22> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_22> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_21> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_20> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_19> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_18> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_16> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_22> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_21> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_20> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_19> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_18> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_16> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_29> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_30> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_31> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/state_cnt_2> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/data16_in_10> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/data16_in_11> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/data16_in_12> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/data16_in_13> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/data16_in_14> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/data16_in_15> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_12> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_13> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_14> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <u0/addr_f16_15> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_15> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_14> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_13> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <addr_12> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_in_31> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_10> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_11> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_12> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_13> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_14> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_15> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_16> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_17> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_18> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_19> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_20> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_21> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_22> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_23> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_24> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_25> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_26> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_27> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <statei_28> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_15> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_14> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_13> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u0/u0/flash_addr_12> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_10> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_11> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_12> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_13> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_14> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_15> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_16> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_17> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_18> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_19> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_20> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_21> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_22> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_23> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_24> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_25> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_26> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_27> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_28> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_29> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_in_30> (without init value) has a constant value of 0 in block <test_flash>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:3203 - The FF/Latch <u0/u0/state_FSM_FFd1> in Unit <test_flash> is the opposite to the following FF/Latch, which will be removed : <u0/u0/flash_control_oe> 
+INFO:Xst:3203 - The FF/Latch <u0/u0/state_FSM_FFd2> in Unit <test_flash> is the opposite to the following FF/Latch, which will be removed : <u0/u0/flash_control_we> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block test_flash, actual ratio is 0.
+FlipFlop u0/state_FSM_FFd1 has been replicated 2 time(s)
+FlipFlop u0/state_FSM_FFd2 has been replicated 2 time(s)
+FlipFlop u0/state_FSM_FFd3 has been replicated 2 time(s)
+FlipFlop u0/state_FSM_FFd4 has been replicated 2 time(s)
+FlipFlop u0/state_FSM_FFd5 has been replicated 2 time(s)
+FlipFlop u0/state_cnt_0 has been replicated 1 time(s)
+FlipFlop u0/state_cnt_1 has been replicated 2 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 194
+ Flip-Flops                                            : 194
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : test_flash.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 451
+#      GND                         : 1
+#      INV                         : 15
+#      LUT1                        : 41
+#      LUT2                        : 6
+#      LUT3                        : 47
+#      LUT4                        : 25
+#      LUT5                        : 49
+#      LUT6                        : 94
+#      MUXCY                       : 91
+#      MUXF7                       : 7
+#      VCC                         : 1
+#      XORCY                       : 74
+# FlipFlops/Latches                : 194
+#      FD                          : 32
+#      FD_1                        : 27
+#      FDC_1                       : 93
+#      FDE_1                       : 39
+#      FDP_1                       : 3
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 69
+#      IBUF                        : 6
+#      IOBUF                       : 16
+#      OBUF                        : 47
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx100fgg676-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             194  out of  126576     0%  
+ Number of Slice LUTs:                  277  out of  63288     0%  
+    Number used as Logic:               277  out of  63288     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    321
+   Number with an unused Flip Flop:     127  out of    321    39%  
+   Number with an unused LUT:            44  out of    321    13%  
+   Number of fully used LUT-FF pairs:   150  out of    321    46%  
+   Number of unique control sets:         6
+
+IO Utilization: 
+ Number of IOs:                          70
+ Number of bonded IOBs:                  70  out of    480    14%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk(Mmux_clk_2_f7:O)               | BUFG(*)(is_read)       | 162   |
+clk50                              | BUFGP                  | 32    |
+-----------------------------------+------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 5.486ns (Maximum Frequency: 182.282MHz)
+   Minimum input arrival time before clock: 4.900ns
+   Maximum output required time after clock: 5.752ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 5.486ns (frequency: 182.282MHz)
+  Total number of paths / destination ports: 3121 / 185
+-------------------------------------------------------------------------
+Delay:               5.486ns (Levels of Logic = 4)
+  Source:            statei_6 (FF)
+  Destination:       statei_0 (FF)
+  Source Clock:      clk falling
+  Destination Clock: clk falling
+
+  Data Path: statei_6 to statei_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC_1:C->Q            7   0.525   1.340  statei_6 (statei_6)
+     LUT5:I0->O            1   0.254   0.682  GND_6_o_GND_6_o_equal_23_o<31>_SW0 (N5)
+     LUT6:I5->O            5   0.254   0.841  GND_6_o_GND_6_o_equal_23_o<31> (GND_6_o_GND_6_o_equal_23_o)
+     LUT5:I4->O           10   0.254   1.008  Mmux_state[3]_statei[31]_wide_mux_32_OUT1101 (Mmux_state[3]_statei[31]_wide_mux_32_OUT110)
+     LUT4:I3->O            1   0.254   0.000  Mmux_state[3]_statei[31]_wide_mux_32_OUT321 (state[3]_statei[31]_wide_mux_32_OUT<9>)
+     FDC_1:D                   0.074          statei_9
+    ----------------------------------------
+    Total                      5.486ns (1.615ns logic, 3.871ns route)
+                                       (29.4% logic, 70.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk50'
+  Clock period: 2.698ns (frequency: 370.713MHz)
+  Total number of paths / destination ports: 528 / 32
+-------------------------------------------------------------------------
+Delay:               2.698ns (Levels of Logic = 33)
+  Source:            count_0 (FF)
+  Destination:       count_31 (FF)
+  Source Clock:      clk50 rising
+  Destination Clock: clk50 rising
+
+  Data Path: count_0 to count_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.525   0.725  count_0 (count_0)
+     INV:I->O              1   0.255   0.000  Mcount_count_lut<0>_INV_0 (Mcount_count_lut<0>)
+     MUXCY:S->O            1   0.215   0.000  Mcount_count_cy<0> (Mcount_count_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<1> (Mcount_count_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<2> (Mcount_count_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<3> (Mcount_count_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<4> (Mcount_count_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<5> (Mcount_count_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<6> (Mcount_count_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<7> (Mcount_count_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<8> (Mcount_count_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<9> (Mcount_count_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<10> (Mcount_count_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<11> (Mcount_count_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<12> (Mcount_count_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<13> (Mcount_count_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<14> (Mcount_count_cy<14>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<15> (Mcount_count_cy<15>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<16> (Mcount_count_cy<16>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<17> (Mcount_count_cy<17>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<18> (Mcount_count_cy<18>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<19> (Mcount_count_cy<19>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<20> (Mcount_count_cy<20>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<21> (Mcount_count_cy<21>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<22> (Mcount_count_cy<22>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<23> (Mcount_count_cy<23>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<24> (Mcount_count_cy<24>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<25> (Mcount_count_cy<25>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<26> (Mcount_count_cy<26>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<27> (Mcount_count_cy<27>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<28> (Mcount_count_cy<28>)
+     MUXCY:CI->O           1   0.023   0.000  Mcount_count_cy<29> (Mcount_count_cy<29>)
+     MUXCY:CI->O           0   0.023   0.000  Mcount_count_cy<30> (Mcount_count_cy<30>)
+     XORCY:CI->O           1   0.206   0.000  Mcount_count_xor<31> (Result<31>)
+     FD:D                      0.074          count_31
+    ----------------------------------------
+    Total                      2.698ns (1.973ns logic, 0.725ns route)
+                                       (73.1% logic, 26.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 128 / 128
+-------------------------------------------------------------------------
+Offset:              4.900ns (Levels of Logic = 2)
+  Source:            rst (PAD)
+  Destination:       is_read (FF)
+  Destination Clock: clk falling
+
+  Data Path: rst to is_read
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.328   0.681  rst_IBUF (rst_IBUF)
+     INV:I->O             96   0.255   2.177  rst_inv1_INV_0 (rst_inv)
+     FDC_1:CLR                 0.459          is_read
+    ----------------------------------------
+    Total                      4.900ns (2.042ns logic, 2.858ns route)
+                                       (41.7% logic, 58.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 68 / 46
+-------------------------------------------------------------------------
+Offset:              5.752ns (Levels of Logic = 2)
+  Source:            state_FSM_FFd3 (FF)
+  Destination:       Debug<3> (PAD)
+  Source Clock:      clk falling
+
+  Data Path: state_FSM_FFd3 to Debug<3>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC_1:C->Q           14   0.525   1.355  state_FSM_FFd3 (state_FSM_FFd3)
+     LUT3:I0->O            2   0.235   0.725  Debug<2>1 (Debug_2_OBUF)
+     OBUF:I->O                 2.912          Debug_3_OBUF (Debug<3>)
+    ----------------------------------------
+    Total                      5.752ns (3.672ns logic, 2.080ns route)
+                                       (63.8% logic, 36.2% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |         |         |    5.486|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clk50
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk50          |    2.698|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 13.00 secs
+Total CPU time to Xst completion: 12.88 secs
+ 
+--> 
+
+Total memory usage is 150816 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  106 (   0 filtered)
+Number of infos    :    6 (   0 filtered)
+

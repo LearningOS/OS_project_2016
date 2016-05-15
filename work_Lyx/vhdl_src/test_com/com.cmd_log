@@ -1,0 +1,5 @@
+xst -intstyle ise -ifn "F:/vhdl/OldDriver_CPU/src/test_com_stable/com.xst" -ofn "F:/vhdl/OldDriver_CPU/src/test_com_stable/com.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc test_com.ucf -p xc6slx100-fgg676-2 com.ngc com.ngd  
+xst -intstyle ise -ifn "F:/vhdl/OldDriver_CPU/src/test_com_stable/com.xst" -ofn "F:/vhdl/OldDriver_CPU/src/test_com_stable/com.syr" 
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/test_com/com.xst" -ofn "F:/OldDriver_OS/vhdl_src/test_com/com.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc test_com.ucf -p xc6slx100-fgg676-2 com.ngc com.ngd  

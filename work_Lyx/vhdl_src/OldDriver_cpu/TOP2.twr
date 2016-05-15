@@ -1,0 +1,366 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Z:\14.7\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 2 -n 3
+-fastpaths -xml TOP2.twx TOP2.ncd -o TOP2.twr TOP2.pcf -ucf TOP2.ucf
+
+Design file:              TOP2.ncd
+Physical constraint file: TOP2.pcf
+Device,package,speed:     xc6slx100,fgg676,C,-2 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clkin
+----------------+------------+------------+------------+------------+------------------+--------+
+                |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source          | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+----------------+------------+------------+------------+------------+------------------+--------+
+RxD             |    8.064(R)|      SLOW  |   -3.830(R)|      FAST  |clk50M            |   0.000|
+baseram_data<0> |    6.821(R)|      SLOW  |   -3.111(R)|      FAST  |clk12M5           |   0.000|
+                |    6.512(F)|      SLOW  |   -2.908(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<1> |    9.751(R)|      SLOW  |   -4.321(R)|      FAST  |clk12M5           |   0.000|
+                |   13.487(F)|      SLOW  |   -6.887(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<2> |    9.088(R)|      SLOW  |   -3.877(R)|      FAST  |clk12M5           |   0.000|
+                |   11.068(F)|      SLOW  |   -5.503(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<3> |    8.861(R)|      SLOW  |   -3.665(R)|      FAST  |clk12M5           |   0.000|
+                |   11.025(F)|      SLOW  |   -5.540(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<4> |    9.417(R)|      SLOW  |   -4.412(R)|      FAST  |clk12M5           |   0.000|
+                |   14.310(F)|      SLOW  |   -7.348(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<5> |    6.600(R)|      SLOW  |   -3.122(R)|      FAST  |clk12M5           |   0.000|
+                |    7.802(F)|      SLOW  |   -3.664(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<6> |    6.350(R)|      SLOW  |   -2.760(R)|      FAST  |clk12M5           |   0.000|
+                |    6.958(F)|      SLOW  |   -3.110(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<7> |    9.718(R)|      SLOW  |   -4.561(R)|      FAST  |clk12M5           |   0.000|
+                |   11.074(F)|      SLOW  |   -5.407(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<8> |    7.998(R)|      SLOW  |   -2.927(R)|      FAST  |clk12M5           |   0.000|
+                |    9.379(F)|      SLOW  |   -4.536(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<9> |    7.227(R)|      SLOW  |   -2.859(R)|      FAST  |clk12M5           |   0.000|
+                |   11.960(F)|      SLOW  |   -6.061(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<10>|    6.916(R)|      SLOW  |   -2.692(R)|      FAST  |clk12M5           |   0.000|
+                |    7.672(F)|      SLOW  |   -3.489(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<11>|    7.068(R)|      SLOW  |   -2.752(R)|      FAST  |clk12M5           |   0.000|
+                |    7.242(F)|      SLOW  |   -3.198(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<12>|    7.154(R)|      SLOW  |   -2.063(R)|      FAST  |clk12M5           |   0.000|
+                |    6.795(F)|      SLOW  |   -2.956(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<13>|    7.715(R)|      SLOW  |   -2.799(R)|      FAST  |clk12M5           |   0.000|
+                |    9.077(F)|      SLOW  |   -4.382(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<14>|    7.293(R)|      SLOW  |   -2.894(R)|      FAST  |clk12M5           |   0.000|
+                |   10.387(F)|      SLOW  |   -5.133(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<15>|    7.221(R)|      SLOW  |   -2.679(R)|      FAST  |clk12M5           |   0.000|
+                |   10.797(F)|      SLOW  |   -5.420(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<16>|    8.965(R)|      SLOW  |   -2.915(R)|      FAST  |clk12M5           |   0.000|
+                |    7.176(F)|      SLOW  |   -3.234(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<17>|    8.045(R)|      SLOW  |   -3.068(R)|      FAST  |clk12M5           |   0.000|
+                |    8.704(F)|      SLOW  |   -4.222(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<18>|    6.666(R)|      SLOW  |   -2.818(R)|      FAST  |clk12M5           |   0.000|
+                |    7.339(F)|      SLOW  |   -3.368(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<19>|    7.753(R)|      SLOW  |   -3.045(R)|      FAST  |clk12M5           |   0.000|
+                |    6.289(F)|      SLOW  |   -2.789(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<20>|    8.080(R)|      SLOW  |   -3.357(R)|      FAST  |clk12M5           |   0.000|
+                |    6.954(F)|      SLOW  |   -3.071(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<21>|    7.192(R)|      SLOW  |   -3.230(R)|      FAST  |clk12M5           |   0.000|
+                |    7.395(F)|      SLOW  |   -3.491(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<22>|    7.915(R)|      SLOW  |   -3.539(R)|      FAST  |clk12M5           |   0.000|
+                |    9.841(F)|      SLOW  |   -4.786(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<23>|   10.363(R)|      SLOW  |   -4.736(R)|      FAST  |clk12M5           |   0.000|
+                |   10.550(F)|      SLOW  |   -5.098(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<24>|    8.581(R)|      SLOW  |   -3.387(R)|      FAST  |clk12M5           |   0.000|
+                |    9.128(F)|      SLOW  |   -4.415(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<25>|    7.599(R)|      SLOW  |   -3.421(R)|      FAST  |clk12M5           |   0.000|
+                |    9.208(F)|      SLOW  |   -4.460(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<26>|    7.518(R)|      SLOW  |   -3.026(R)|      FAST  |clk12M5           |   0.000|
+                |    8.866(F)|      SLOW  |   -4.225(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<27>|    6.835(R)|      SLOW  |   -2.823(R)|      FAST  |clk12M5           |   0.000|
+                |    6.774(F)|      SLOW  |   -2.965(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<28>|    6.964(R)|      SLOW  |   -2.863(R)|      FAST  |clk12M5           |   0.000|
+                |    7.376(F)|      SLOW  |   -3.266(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<29>|    7.240(R)|      SLOW  |   -2.903(R)|      FAST  |clk12M5           |   0.000|
+                |    8.360(F)|      SLOW  |   -3.923(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<30>|    7.710(R)|      SLOW  |   -2.794(R)|      FAST  |clk12M5           |   0.000|
+                |    6.225(F)|      SLOW  |   -2.691(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<31>|    7.097(R)|      SLOW  |   -2.659(R)|      FAST  |clk12M5           |   0.000|
+                |    5.860(F)|      SLOW  |   -2.514(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<0> |    9.035(R)|      SLOW  |   -4.077(R)|      FAST  |clk12M5           |   0.000|
+                |   10.261(F)|      SLOW  |   -4.792(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<1> |    9.667(R)|      SLOW  |   -4.123(R)|      FAST  |clk12M5           |   0.000|
+                |   11.017(F)|      SLOW  |   -5.473(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<2> |    8.908(R)|      SLOW  |   -3.726(R)|      FAST  |clk12M5           |   0.000|
+                |   10.460(F)|      SLOW  |   -5.240(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<3> |   10.104(R)|      SLOW  |   -3.958(R)|      FAST  |clk12M5           |   0.000|
+                |   11.070(F)|      SLOW  |   -5.591(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<4> |    9.501(R)|      SLOW  |   -3.990(R)|      FAST  |clk12M5           |   0.000|
+                |   10.816(F)|      SLOW  |   -5.404(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<5> |    9.597(R)|      SLOW  |   -4.162(R)|      FAST  |clk12M5           |   0.000|
+                |   11.161(F)|      SLOW  |   -5.572(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<6> |   10.237(R)|      SLOW  |   -4.260(R)|      FAST  |clk12M5           |   0.000|
+                |   11.420(F)|      SLOW  |   -5.796(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<7> |    9.523(R)|      SLOW  |   -3.920(R)|      FAST  |clk12M5           |   0.000|
+                |   10.081(F)|      SLOW  |   -4.507(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<8> |    6.546(R)|      SLOW  |   -2.107(R)|      FAST  |clk12M5           |   0.000|
+                |    5.288(F)|      SLOW  |   -2.042(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<9> |    6.676(R)|      SLOW  |   -2.480(R)|      FAST  |clk12M5           |   0.000|
+                |    5.983(F)|      SLOW  |   -2.584(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<10>|    7.840(R)|      SLOW  |   -3.284(R)|      FAST  |clk12M5           |   0.000|
+                |    8.289(F)|      SLOW  |   -3.749(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<11>|    8.162(R)|      SLOW  |   -3.559(R)|      FAST  |clk12M5           |   0.000|
+                |    8.959(F)|      SLOW  |   -4.138(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<12>|    6.759(R)|      SLOW  |   -2.565(R)|      FAST  |clk12M5           |   0.000|
+                |    6.009(F)|      SLOW  |   -2.429(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<13>|    8.131(R)|      SLOW  |   -3.213(R)|      FAST  |clk12M5           |   0.000|
+                |    6.917(F)|      SLOW  |   -2.979(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<14>|    7.616(R)|      SLOW  |   -2.508(R)|      FAST  |clk12M5           |   0.000|
+                |    5.640(F)|      SLOW  |   -2.252(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<15>|    6.521(R)|      SLOW  |   -2.180(R)|      FAST  |clk12M5           |   0.000|
+                |    6.032(F)|      SLOW  |   -2.489(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<16>|    9.450(R)|      SLOW  |   -3.233(R)|      FAST  |clk12M5           |   0.000|
+                |   10.233(F)|      SLOW  |   -4.935(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<17>|   10.412(R)|      SLOW  |   -3.280(R)|      FAST  |clk12M5           |   0.000|
+                |   10.252(F)|      SLOW  |   -5.022(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<18>|    9.771(R)|      SLOW  |   -3.978(R)|      FAST  |clk12M5           |   0.000|
+                |    9.140(F)|      SLOW  |   -4.479(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<19>|    8.149(R)|      SLOW  |   -3.746(R)|      FAST  |clk12M5           |   0.000|
+                |    9.740(F)|      SLOW  |   -4.753(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<20>|    9.226(R)|      SLOW  |   -3.406(R)|      FAST  |clk12M5           |   0.000|
+                |    9.595(F)|      SLOW  |   -4.555(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<21>|    7.989(R)|      SLOW  |   -2.936(R)|      FAST  |clk12M5           |   0.000|
+                |    7.658(F)|      SLOW  |   -3.566(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<22>|    8.669(R)|      SLOW  |   -3.301(R)|      FAST  |clk12M5           |   0.000|
+                |   10.934(F)|      SLOW  |   -5.416(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<23>|    9.992(R)|      SLOW  |   -4.925(R)|      FAST  |clk12M5           |   0.000|
+                |   10.451(F)|      SLOW  |   -5.134(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<24>|    9.300(R)|      SLOW  |   -3.452(R)|      FAST  |clk12M5           |   0.000|
+                |   13.601(F)|      SLOW  |   -6.795(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<25>|    8.335(R)|      SLOW  |   -3.433(R)|      FAST  |clk12M5           |   0.000|
+                |   10.586(F)|      SLOW  |   -5.201(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<26>|    8.409(R)|      SLOW  |   -3.562(R)|      FAST  |clk12M5           |   0.000|
+                |    8.820(F)|      SLOW  |   -4.179(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<27>|    8.264(R)|      SLOW  |   -3.732(R)|      FAST  |clk12M5           |   0.000|
+                |    9.240(F)|      SLOW  |   -4.346(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<28>|    7.630(R)|      SLOW  |   -3.293(R)|      FAST  |clk12M5           |   0.000|
+                |    9.332(F)|      SLOW  |   -4.491(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<29>|    8.215(R)|      SLOW  |   -3.570(R)|      FAST  |clk12M5           |   0.000|
+                |    8.811(F)|      SLOW  |   -4.172(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<30>|    8.705(R)|      SLOW  |   -3.427(R)|      FAST  |clk12M5           |   0.000|
+                |   10.570(F)|      SLOW  |   -5.145(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<31>|    5.853(R)|      SLOW  |   -2.095(R)|      FAST  |clk12M5           |   0.000|
+                |    6.108(F)|      SLOW  |   -2.515(F)|      FAST  |clk12M5           |   0.000|
+rst             |   19.359(R)|      SLOW  |   -2.561(R)|      FAST  |clk12M5           |   0.000|
+                |   17.998(F)|      SLOW  |   -6.193(F)|      FAST  |clk12M5           |   0.000|
+                |   14.908(R)|      SLOW  |   -3.822(R)|      FAST  |clk50M            |   0.000|
+----------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock ps2clk
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+kbd_data<0> |    4.395(R)|      SLOW  |    2.124(R)|      SLOW  |ps2clk_BUFGP      |   0.000|
+kbd_data<1> |    3.044(R)|      SLOW  |    2.278(R)|      SLOW  |ps2clk_BUFGP      |   0.000|
+kbd_data<2> |    2.501(R)|      SLOW  |    2.117(R)|      SLOW  |ps2clk_BUFGP      |   0.000|
+kbd_data<3> |    2.517(R)|      SLOW  |    2.124(R)|      SLOW  |ps2clk_BUFGP      |   0.000|
+kbd_enb_hi  |    4.361(R)|      SLOW  |   -1.653(R)|      FAST  |ps2clk_BUFGP      |   0.000|
+kbd_enb_lo  |    9.472(R)|      SLOW  |    0.440(R)|      SLOW  |ps2clk_BUFGP      |   0.000|
+rst         |   13.735(R)|      SLOW  |   -4.180(R)|      FAST  |ps2clk_BUFGP      |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Clock clkin to Pad
+----------------+-----------------+------------+-----------------+------------+------------------+--------+
+                |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination     |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+----------------+-----------------+------------+-----------------+------------+------------------+--------+
+TxD             |        13.954(R)|      SLOW  |         6.638(R)|      FAST  |clk50M            |   0.000|
+bOut<0>         |        21.076(R)|      SLOW  |         6.172(R)|      FAST  |clk50M            |   0.000|
+bOut<1>         |        22.449(R)|      SLOW  |         7.156(R)|      FAST  |clk50M            |   0.000|
+bOut<2>         |        21.497(R)|      SLOW  |         6.406(R)|      FAST  |clk50M            |   0.000|
+baseram_addr<0> |        11.142(R)|      SLOW  |         5.655(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<1> |        11.450(R)|      SLOW  |         5.703(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<2> |        11.627(R)|      SLOW  |         5.770(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<3> |        14.408(R)|      SLOW  |         7.673(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<4> |        11.281(R)|      SLOW  |         5.637(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<5> |         9.829(R)|      SLOW  |         4.701(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<6> |         8.925(R)|      SLOW  |         4.410(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<7> |         9.591(R)|      SLOW  |         4.552(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<8> |         8.944(R)|      SLOW  |         4.178(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<9> |        10.275(R)|      SLOW  |         5.012(R)|      FAST  |clk12M5           |   0.000|
+baseram_addr<10>|        17.014(R)|      SLOW  |         6.175(R)|      FAST  |clk12M5           |   0.000|
+                |        15.133(F)|      SLOW  |         5.026(F)|      FAST  |clk12M5           |   0.000|
+baseram_addr<11>|        17.234(R)|      SLOW  |         5.273(R)|      FAST  |clk12M5           |   0.000|
+                |        15.317(F)|      SLOW  |         6.010(F)|      FAST  |clk12M5           |   0.000|
+baseram_addr<12>|        17.558(R)|      SLOW  |         5.289(R)|      FAST  |clk12M5           |   0.000|
+                |        15.641(F)|      SLOW  |         6.320(F)|      FAST  |clk12M5           |   0.000|
+baseram_addr<13>|        16.898(R)|      SLOW  |         4.745(R)|      FAST  |clk12M5           |   0.000|
+                |        14.981(F)|      SLOW  |         5.372(F)|      FAST  |clk12M5           |   0.000|
+baseram_addr<14>|        16.940(R)|      SLOW  |         5.632(R)|      FAST  |clk12M5           |   0.000|
+                |        15.023(F)|      SLOW  |         5.956(F)|      FAST  |clk12M5           |   0.000|
+baseram_addr<15>|        14.895(R)|      SLOW  |         4.444(R)|      FAST  |clk12M5           |   0.000|
+                |        12.978(F)|      SLOW  |         4.631(F)|      FAST  |clk12M5           |   0.000|
+baseram_addr<16>|        20.319(R)|      SLOW  |         6.984(R)|      FAST  |clk12M5           |   0.000|
+                |        18.402(F)|      SLOW  |         7.049(F)|      FAST  |clk12M5           |   0.000|
+baseram_addr<17>|        17.906(R)|      SLOW  |         5.871(R)|      FAST  |clk12M5           |   0.000|
+                |        15.989(F)|      SLOW  |         6.454(F)|      FAST  |clk12M5           |   0.000|
+baseram_addr<18>|        14.643(R)|      SLOW  |         4.074(R)|      FAST  |clk12M5           |   0.000|
+                |        12.726(F)|      SLOW  |         4.754(F)|      FAST  |clk12M5           |   0.000|
+baseram_addr<19>|        15.544(R)|      SLOW  |         5.588(R)|      FAST  |clk12M5           |   0.000|
+                |        13.627(F)|      SLOW  |         5.219(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<0> |         9.441(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<1> |        11.859(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<2> |        11.599(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<3> |        11.817(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<4> |        12.250(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<5> |         9.921(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<6> |         8.487(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<7> |        11.817(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<8> |        10.302(F)|      SLOW  |         1.827(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<9> |         9.681(F)|      SLOW  |         1.827(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<10>|         9.972(F)|      SLOW  |         1.827(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<11>|         9.142(F)|      SLOW  |         1.827(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<12>|         9.142(F)|      SLOW  |         1.827(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<13>|        11.460(F)|      SLOW  |         1.878(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<14>|        11.460(F)|      SLOW  |         1.878(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<15>|        11.220(F)|      SLOW  |         1.827(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<16>|         8.927(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<17>|         8.927(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<18>|         8.973(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<19>|         8.973(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<20>|        11.109(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<21>|        11.109(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<22>|        11.859(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<23>|        11.599(F)|      SLOW  |         1.749(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<24>|        11.067(F)|      SLOW  |         1.878(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<25>|        11.067(F)|      SLOW  |         1.878(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<26>|         9.972(F)|      SLOW  |         1.827(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<27>|         9.920(F)|      SLOW  |         1.878(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<28>|         9.920(F)|      SLOW  |         1.878(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<29>|         9.314(F)|      SLOW  |         1.827(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<30>|         9.587(F)|      SLOW  |         1.878(F)|      FAST  |clk12M5           |   0.000|
+baseram_data<31>|         9.587(F)|      SLOW  |         1.878(F)|      FAST  |clk12M5           |   0.000|
+baseram_oe      |         8.420(R)|      SLOW  |         4.198(R)|      FAST  |clk12M5           |   0.000|
+                |         8.960(F)|      SLOW  |         4.495(F)|      FAST  |clk12M5           |   0.000|
+baseram_we      |        10.037(R)|      SLOW  |         5.197(R)|      FAST  |clk12M5           |   0.000|
+                |        10.944(F)|      SLOW  |         5.671(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<0> |        12.456(R)|      SLOW  |         6.501(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<1> |        12.863(R)|      SLOW  |         6.630(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<2> |        12.750(R)|      SLOW  |         6.633(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<3> |        11.274(R)|      SLOW  |         5.887(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<4> |        11.714(R)|      SLOW  |         6.112(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<5> |         9.625(R)|      SLOW  |         4.634(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<6> |        10.333(R)|      SLOW  |         5.377(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<7> |        12.671(R)|      SLOW  |         6.420(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<8> |        12.016(R)|      SLOW  |         6.100(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<9> |        12.944(R)|      SLOW  |         6.728(R)|      FAST  |clk12M5           |   0.000|
+extrram_addr<10>|        22.211(R)|      SLOW  |         9.461(R)|      FAST  |clk12M5           |   0.000|
+                |        20.330(F)|      SLOW  |         8.312(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<11>|        19.494(R)|      SLOW  |         6.706(R)|      FAST  |clk12M5           |   0.000|
+                |        17.577(F)|      SLOW  |         7.443(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<12>|        19.561(R)|      SLOW  |         6.620(R)|      FAST  |clk12M5           |   0.000|
+                |        17.644(F)|      SLOW  |         7.651(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<13>|        26.834(R)|      SLOW  |        10.454(R)|      FAST  |clk12M5           |   0.000|
+                |        24.917(F)|      SLOW  |        11.081(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<14>|        22.787(R)|      SLOW  |         9.206(R)|      FAST  |clk12M5           |   0.000|
+                |        20.870(F)|      SLOW  |         9.530(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<15>|        16.709(R)|      SLOW  |         5.618(R)|      FAST  |clk12M5           |   0.000|
+                |        14.792(F)|      SLOW  |         5.805(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<16>|        20.121(R)|      SLOW  |         6.995(R)|      FAST  |clk12M5           |   0.000|
+                |        18.204(F)|      SLOW  |         7.060(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<17>|        17.687(R)|      SLOW  |         5.915(R)|      FAST  |clk12M5           |   0.000|
+                |        15.770(F)|      SLOW  |         6.498(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<18>|        16.904(R)|      SLOW  |         5.489(R)|      FAST  |clk12M5           |   0.000|
+                |        14.987(F)|      SLOW  |         6.169(F)|      FAST  |clk12M5           |   0.000|
+extrram_addr<19>|        17.798(R)|      SLOW  |         7.154(R)|      FAST  |clk12M5           |   0.000|
+                |        15.881(F)|      SLOW  |         6.785(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<0> |        12.410(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<1> |        12.410(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<2> |        12.646(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<3> |        12.646(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<4> |        12.668(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<5> |        12.321(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<6> |        12.428(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<7> |        11.897(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<8> |         9.249(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<9> |         9.249(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<10>|         9.693(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<11>|         9.693(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<12>|         9.114(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<13>|         9.413(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<14>|         9.246(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<15>|         9.011(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<16>|        17.720(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<17>|        17.720(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<18>|        16.886(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<19>|        17.303(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<20>|        17.303(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<21>|        16.432(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<22>|        18.123(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<23>|        18.123(F)|      SLOW  |         1.760(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<24>|        11.897(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<25>|        11.436(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<26>|        10.494(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<27>|        10.494(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<28>|        10.507(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<29>|        10.156(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<30>|        10.156(F)|      SLOW  |         1.837(F)|      FAST  |clk12M5           |   0.000|
+extrram_data<31>|         9.114(F)|      SLOW  |         1.888(F)|      FAST  |clk12M5           |   0.000|
+extrram_oe      |        10.551(R)|      SLOW  |         5.575(R)|      FAST  |clk12M5           |   0.000|
+                |        11.885(F)|      SLOW  |         6.457(F)|      FAST  |clk12M5           |   0.000|
+extrram_we      |        11.306(R)|      SLOW  |         6.012(R)|      FAST  |clk12M5           |   0.000|
+                |        10.892(F)|      SLOW  |         5.828(F)|      FAST  |clk12M5           |   0.000|
+gOut<0>         |        23.390(R)|      SLOW  |         7.055(R)|      FAST  |clk50M            |   0.000|
+gOut<1>         |        21.632(R)|      SLOW  |         6.307(R)|      FAST  |clk50M            |   0.000|
+gOut<2>         |        22.195(R)|      SLOW  |         6.239(R)|      FAST  |clk50M            |   0.000|
+hs              |         4.560(R)|      SLOW  |         2.024(R)|      FAST  |clk50M            |   0.000|
+rOut<0>         |        20.182(R)|      SLOW  |         5.571(R)|      FAST  |clk50M            |   0.000|
+rOut<1>         |        19.404(R)|      SLOW  |         5.338(R)|      FAST  |clk50M            |   0.000|
+rOut<2>         |        17.813(R)|      SLOW  |         5.117(R)|      FAST  |clk50M            |   0.000|
+vs              |         4.562(R)|      SLOW  |         2.026(R)|      FAST  |clk50M            |   0.000|
+----------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clkin
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clkin          |   23.340|   20.532|   19.026|   17.110|
+ps2clk         |    9.373|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock ps2clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+ps2clk         |    5.860|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Sat May 14 21:17:32 2016 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 298 MB
+
+
+

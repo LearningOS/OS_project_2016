@@ -1,0 +1,31 @@
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.xst" -ofn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.syr" 
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.xst" -ofn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.syr" 
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.xst" -ofn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc com_plat.ucf -p xc6slx100-fgg676-2 com_plat.ngc com_plat.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o com_plat_map.ncd com_plat.ngd com_plat.pcf 
+par -w -intstyle ise -ol high -mt off com_plat_map.ncd com_plat.ncd com_plat.pcf 
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.xst" -ofn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc com_plat.ucf -p xc6slx100-fgg676-2 com_plat.ngc com_plat.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o com_plat_map.ncd com_plat.ngd com_plat.pcf 
+par -w -intstyle ise -ol high -mt off com_plat_map.ncd com_plat.ncd com_plat.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml com_plat.twx com_plat.ncd -o com_plat.twr com_plat.pcf -ucf com_plat.ucf 
+bitgen -intstyle ise -f com_plat.ut com_plat.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc com_plat.ucf -p xc6slx100-fgg676-2 com_plat.ngc com_plat.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o com_plat_map.ncd com_plat.ngd com_plat.pcf 
+par -w -intstyle ise -ol high -mt off com_plat_map.ncd com_plat.ncd com_plat.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml com_plat.twx com_plat.ncd -o com_plat.twr com_plat.pcf -ucf com_plat.ucf 
+bitgen -intstyle ise -f com_plat.ut com_plat.ncd 
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.xst" -ofn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc com_plat.ucf -p xc6slx100-fgg676-2 com_plat.ngc com_plat.ngd  
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.xst" -ofn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc com_plat.ucf -p xc6slx100-fgg676-2 com_plat.ngc com_plat.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o com_plat_map.ncd com_plat.ngd com_plat.pcf 
+par -w -intstyle ise -ol high -mt off com_plat_map.ncd com_plat.ncd com_plat.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml com_plat.twx com_plat.ncd -o com_plat.twr com_plat.pcf -ucf com_plat.ucf 
+bitgen -intstyle ise -f com_plat.ut com_plat.ncd 
+xst -intstyle ise -ifn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.xst" -ofn "F:/OldDriver_OS/vhdl_src/RSP_manual/com_plat.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc com_plat.ucf -p xc6slx100-fgg676-2 com_plat.ngc com_plat.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o com_plat_map.ncd com_plat.ngd com_plat.pcf 
+par -w -intstyle ise -ol high -mt off com_plat_map.ncd com_plat.ncd com_plat.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml com_plat.twx com_plat.ncd -o com_plat.twr com_plat.pcf -ucf com_plat.ucf 
+bitgen -intstyle ise -f com_plat.ut com_plat.ncd 
