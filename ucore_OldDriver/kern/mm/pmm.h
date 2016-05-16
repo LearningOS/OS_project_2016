@@ -7,6 +7,8 @@
 #include <atomic.h>
 #include <assert.h>
 
+#include "stdio.h"
+
 /* fork flags used in do_fork*/
 #define CLONE_VM            0x00000100  // set if VM shared between processes
 #define CLONE_THREAD        0x00000200  // thread group
@@ -73,10 +75,13 @@ void print_pgdir(void);
 #define KADDR(pa) ({                                                    \
             uintptr_t __m_pa = (pa);                                    \
             size_t __m_ppn = PPN(__m_pa);                               \
-            if (__m_ppn >= npage) {                                     \
-                panic("KADDR called with invalid pa %08lx", __m_pa);    \
+            if (__m_pa == 0) {                                         \
+                kprintf("PPN 0 is %d or 0x%08x\n", __m_ppn, __m_ppn);     \
             }                                                           \
-            (void *) (__m_pa);                               \
+            if (__m_ppn >= npage) {                                     \
+                panic("KADDR called with invalid pa %08lx and __m_ppn is %d npage is %d", __m_pa, __m_ppn, npage);    \
+            }                                                           \
+            (void *) (__m_pa);                                          \
         })
 
 extern struct Page *pages;

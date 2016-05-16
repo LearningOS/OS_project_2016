@@ -3,7 +3,7 @@
  *
  *       Filename:  ramdisk.h
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  03/26/2012 03:35:39 PM
@@ -28,4 +28,3 @@ bool check_initrd();
 #define INITRD_SIZE() (_initrd_end - _initrd_begin)
 
 void ramdisk_init_struct(struct ide_device* dev);
-

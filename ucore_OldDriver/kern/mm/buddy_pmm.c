@@ -126,6 +126,8 @@ buddy_alloc_pages(size_t n) {
     if (page != NULL && n != order_size) {
         free_pages(page + n, order_size - n);
     }
+    // kprintf("%s LINE: %d\n", __func__, __LINE__);
+    // kprintf("page is 0x%08x\n", page);
     return page;
 }
 

@@ -6,6 +6,7 @@
 #include <ide.h>
 #include <assert.h>
 #include <ramdisk.h>
+#include <thinflash.h>
 #include <memlayout.h>
 
 #define VALID_IDE(ideno)        (((ideno) >= 0) && ((ideno) < MAX_IDE) && (ide_devices[ideno].valid))
@@ -28,14 +29,22 @@ ide_wait_ready(unsigned int iobase, bool check_error) {
 // TODO: check if ramdisk are there
 void
 ide_init(void) {
-  int i;
-  for(i=0;i<MAX_IDE;i++) ide_devices[i].valid = 0;
-  int devno = DISK0_DEV_NO;
-  assert(devno<MAX_IDE);
-  ramdisk_init_struct(&ide_devices[devno]);
-  if(CHECK_CALL(devno, init))
-    ide_devices[devno].init(&ide_devices[devno]);
-
+    int i;
+    for(i=0;i<MAX_IDE;i++) ide_devices[i].valid = 0;
+    int devno = DISK0_DEV_NO;
+    assert(devno<MAX_IDE);
+    ramdisk_init_struct(&ide_devices[devno]);
+    if(CHECK_CALL(devno, init)) {
+        ide_devices[devno].init(&ide_devices[devno]);
+    }
+    // devno = DISK1_DEV_NO;
+    // assert (devno < MAX_IDE);
+    // thinflash_init_struct(&ide_devices[devno]);
+    // if (CHECK_CALL(devno, init)) {
+    //     // kprintf("ready to init\n");
+    //     ide_devices[devno].init(&ide_devices[devno]);
+    //     // kprintf("finish init\n");
+    // }
 }
 
 bool
@@ -53,14 +62,23 @@ ide_device_size(unsigned int ideno) {
 
 int
 ide_read_secs(unsigned int ideno, uint32_t secno, void *dst, size_t nsecs) {
-  if(CHECK_CALL(ideno, read_secs))
-    return ide_devices[ideno].read_secs(&ide_devices[ideno], secno, dst, nsecs);
-  return 0;
+    if(CHECK_CALL(ideno, read_secs)) {
+        return ide_devices[ideno].read_secs(&ide_devices[ideno], secno, dst, nsecs);
+    }
+    return 0;
 }
 
 int
 ide_write_secs(unsigned int ideno, uint32_t secno, const void *src, size_t nsecs) {
-  if(CHECK_CALL(ideno, write_secs))
-    return ide_devices[ideno].write_secs(&ide_devices[ideno], secno, src, nsecs);
-  return 0;
+    if(CHECK_CALL(ideno, write_secs)) {
+        return ide_devices[ideno].write_secs(&ide_devices[ideno], secno, src, nsecs);
+    }
+    return 0;
+}
+
+int
+ide_erase_secs(unsigned int ideno, uint32_t secno) {
+    if (CHECK_CALL(ideno, erase_secs)) {
+        return ide_devices[ideno].erase_secs(&ide_devices[ideno], secno);
+    }
 }

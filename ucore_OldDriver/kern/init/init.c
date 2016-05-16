@@ -13,6 +13,7 @@
 #include <thumips_tlb.h>
 #include <sched.h>
 #include <vga.h>
+#include <flashswap.h>
 
 void setup_exception_vector()
 {
@@ -58,14 +59,47 @@ kern_init(void) {
     proc_init();                // init process table
 
     ide_init();
+    // while (1);
     fs_init();
 
     // debug-for-Translate
 	// kprintf("%s line %d: before intr_enable\n", __func__, __LINE__);
+    swapper_init();
     intr_enable();              // enable irq interrupt
     //*(int*)(0x00124) = 0x432;
     //asm volatile("divu $1, $1, $1");
     // debug-for-Translate
 	// kprintf("%s line %d: before cpu_idle\n", __func__, __LINE__);
+
+    // debug
+    // volatile uint16_t *addr = 0xBE000000;
+    // *addr = 0x90;
+    // uint16_t tmp = *addr;
+    //
+    // *addr = 0x20;
+    // *addr = 0xD0;
+    // do{
+    //     *addr = 0x70;
+    // }while(!(*addr&0x80));
+    //
+    // // uint16_t dst;
+    // // memcpy(&dst, addr, sizeof(uint16_t));
+    // kprintf("code: %x\n", tmp);
+    // addr[0] = 0xFF;
+    // *addr = 0xff;
+    // for (int i = 0; i < 100; ++i) {
+    //     int a = addr[i];
+    //     kprintf("%d\n", a);
+    // }
+    // int iter;
+    // for (iter = 0; iter < 10; ++ iter) {
+    //     w_addr[iter] = 0xFF;
+    //     // kprintf("%d: %x\n", iter, w_addr[iter]);
+    // }
+    // for (iter = 0; iter < 10; ++ iter) {
+    //     kprintf("%d: %x\n", iter, r_addr[iter]);
+    // }
+    // kprintf("%x %x %x %x %x %x\n", *(r_addr ++), *(r_addr ++), *(r_addr ++), *(r_addr ++), *(r_addr ++), *(r_addr ++));
+    // while (1);
     cpu_idle();
 }

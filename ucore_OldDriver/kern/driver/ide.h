@@ -10,6 +10,7 @@ size_t ide_device_size(unsigned int ideno);
 
 int ide_read_secs(unsigned int ideno, uint32_t secno, void *dst, size_t nsecs);
 int ide_write_secs(unsigned int ideno, uint32_t secno, const void *src, size_t nsecs);
+int ide_erase_secs(unsigned int ideno, uint32_t secno);
 
 struct ide_device {
     unsigned int valid;        // 0 or 1 (If Device Really Exists)
@@ -23,7 +24,7 @@ struct ide_device {
     /* return 0 if succeed */
     int (*read_secs)(struct ide_device *dev, size_t secno, void *dst, size_t nsecs);
     int (*write_secs)(struct ide_device *dev, size_t secno, const void *src, size_t nsecs);
-
+    int (*erase_secs)(struct ide_devices *dev, size_t secno);
 };
 
 #endif /* !__KERN_DRIVER_RAMDISK_H__ */
