@@ -56,6 +56,7 @@ sfs_remove_links(struct sfs_inode *sin) {
 
 static bool
 sfs_block_inuse(struct sfs_fs *sfs, uint32_t ino) {
+    // kprintf("sfs->super.blocks is %d and ino is %d\n", sfs->super.blocks, ino);
     if (ino != 0 && ino < sfs->super.blocks) {
         return !bitmap_test(sfs->freemap, ino);
     }
@@ -70,12 +71,14 @@ sfs_block_alloc(struct sfs_fs *sfs, uint32_t *ino_store) {
     }
     assert(sfs->super.unused_blocks > 0);
     sfs->super.unused_blocks --, sfs->super_dirty = 1;
+    kprintf("%s\n", __func__);
     assert(sfs_block_inuse(sfs, *ino_store));
     return sfs_clear_block(sfs, *ino_store, 1);
 }
 
 static void
 sfs_block_free(struct sfs_fs *sfs, uint32_t ino) {
+    kprintf("%s\n", __func__);
     assert(sfs_block_inuse(sfs, ino));
     bitmap_free(sfs->freemap, ino);
     sfs->super.unused_blocks ++, sfs->super_dirty = 1;
@@ -109,11 +112,13 @@ lookup_sfs_nolock(struct sfs_fs *sfs, uint32_t ino) {
             return node;
         }
     }
+    // while (1);
     return NULL;
 }
 
 int
 sfs_load_inode(struct sfs_fs *sfs, struct inode **node_store, uint32_t ino) {
+    // while (1);
     lock_sfs_fs(sfs);
     struct inode *node;
     if ((node = lookup_sfs_nolock(sfs, ino)) != NULL) {
@@ -126,8 +131,10 @@ sfs_load_inode(struct sfs_fs *sfs, struct inode **node_store, uint32_t ino) {
         goto failed_unlock;
     }
 
-    // kprintf("in %s: ino is %d\n", __func__, ino);
+    kprintf("in %s: ino is %d\n", __func__, ino);
+    // while (1);
 
+    // kprintf("%s\n", __func__);
     assert(sfs_block_inuse(sfs, ino));
     if ((ret = sfs_rbuf(sfs, din, sizeof(struct sfs_disk_inode), ino, 0)) != 0) {
         goto failed_cleanup_din;
@@ -209,6 +216,7 @@ sfs_bmap_get_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, uint32_t index, b
             din->direct[index] = ino;
             sin->dirty = 1;
         }
+        // kprintf("index < SFS_NDIRECT\n");
         goto out;
     }
 
@@ -223,6 +231,7 @@ sfs_bmap_get_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, uint32_t index, b
             din->indirect = ent;
             sin->dirty = 1;
         }
+        // kprintf("index < SFS_BLK_NENTRY\n");
         goto out;
     }
 
@@ -241,6 +250,7 @@ out:
 
 static int
 sfs_bmap_free_sub_nolock(struct sfs_fs *sfs, uint32_t ent, uint32_t index) {
+    // kprintf("%s\n", __func__);
     assert(sfs_block_inuse(sfs, ent) && index < SFS_BLK_NENTRY);
     int ret;
     uint32_t ino, zero = 0;
@@ -292,9 +302,11 @@ sfs_bmap_load_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, uint32_t index, 
     int ret;
     uint32_t ino;
     bool create = (index == din->blocks);
+    // kprintf("%s\n", __func__);
     if ((ret = sfs_bmap_get_nolock(sfs, sin, index, create, &ino)) != 0) {
         return ret;
     }
+    // kprintf("%s\n", __func__);
     assert(sfs_block_inuse(sfs, ino));
     if (create) {
         din->blocks ++;
@@ -321,16 +333,22 @@ sfs_bmap_truncate_nolock(struct sfs_fs *sfs, struct sfs_inode *sin) {
 static int
 sfs_dirent_read_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, int slot, struct sfs_disk_entry *entry) {
     assert(_SFS_INODE_GET_TYPE(sin->din) == SFS_TYPE_DIR && (slot >= 0 && slot < sin->din->blocks));
+    // kprintf("%s\n", __func__);
     int ret;
     uint32_t ino;
     if ((ret = sfs_bmap_load_nolock(sfs, sin, slot, &ino)) != 0) {
         return ret;
     }
+    // kprintf("%s and ino is %d\n", __func__, ino);
+    // if (ino == -1) {
+    //     kprintf("%d\n", __LINE__);
+    // }
     assert(sfs_block_inuse(sfs, ino));
     if ((ret = sfs_rbuf(sfs, entry, sizeof(struct sfs_disk_entry), ino, 0)) != 0) {
         return ret;
     }
     entry->name[SFS_MAX_FNAME_LEN] = '\0';
+    // kprintf("%s finish inner\n", __func__);
     return 0;
 }
 
@@ -351,6 +369,7 @@ sfs_dirent_write_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, int slot, uin
 	if ((ret = sfs_bmap_load_nolock(sfs, sin, slot, &ino)) != 0) {
 		goto wirte_out;
 	}
+    // kprintf("heheh\n");
 	assert(sfs_block_inuse(sfs, ino));
 	ret = sfs_wbuf(sfs, entry, sizeof(struct sfs_disk_entry), ino, 0);
 wirte_out:
@@ -386,9 +405,11 @@ sfs_dirent_search_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, const char *
     int ret, i, nslots = sin->din->blocks;
     set_pvalue(empty_slot, nslots);
     for (i = 0; i < nslots; i ++) {
+        // kprintf("i is %d and nslots is %d\n", i, nslots);
         if ((ret = sfs_dirent_read_nolock(sfs, sin, i, entry)) != 0) {
             goto out;
         }
+        // kprintf("%s:sfs_dirent_read_nolock end\n", __func__);
         if (entry->ino == 0) {
             set_pvalue(empty_slot, i);
             continue ;
@@ -403,6 +424,7 @@ sfs_dirent_search_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, const char *
     ret = -E_NOENT;
 out:
     kfree(entry);
+    // kprintf("%s --- finish\n", __func__);
     return ret;
 }
 
@@ -413,6 +435,7 @@ sfs_dirent_findino_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, uint32_t in
         if ((ret = sfs_dirent_read_nolock(sfs, sin, i, entry)) != 0) {
             return ret;
         }
+        // kprintf("%s\n", __func__);
         if (entry->ino == ino) {
             return 0;
         }
@@ -427,6 +450,7 @@ sfs_lookup_once(struct sfs_fs *sfs, struct sfs_inode *sin, const char *name, str
     lock_sin(sin);
     {
         ret = sfs_dirent_search_nolock(sfs, sin, name, &ino, slot, NULL);
+        // kprintf("%s\n", __func__);
     }
     unlock_sin(sin);
     if (ret == 0) {
@@ -514,6 +538,13 @@ sfs_io_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, void *buf, off_t offset
         if ((ret = sfs_buf_op(sfs, buf, size, ino, blkoff)) != 0) {
             goto out;
         }
+        // add
+        if (write) {
+            kprintf("write secno %d\n", ino);
+            int secno = ram2block(ino);
+            swapper_block_changed(secno);
+            swapper_block_late_sync(secno);
+        }
         alen += size;
         if (nblks == 0) {
             goto out;
@@ -530,6 +561,13 @@ sfs_io_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, void *buf, off_t offset
             goto out;
         }
         alen += size, buf += size, blkno ++, nblks --;
+        // add
+        if (write) {
+            kprintf("write secno %d\n", ino);
+            int secno = ram2block(ino);
+            swapper_block_changed(secno);
+            swapper_block_late_sync(secno);
+        }
     }
 
     if((size = endpos % SFS_BLKSIZE) != 0) {
@@ -540,6 +578,13 @@ sfs_io_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, void *buf, off_t offset
             goto out;
         }
         alen += size;
+        // add
+        if (write) {
+            kprintf("write secno %d\n", ino);
+            int secno = ram2block(ino);
+            swapper_block_changed(secno);
+            swapper_block_late_sync(secno);
+        }
     }
 out:
     *alenp = alen;
@@ -609,6 +654,13 @@ sfs_fsync(struct inode *node) {
     //     }
     //     unlock_sfs_fs(sfs);
     // }
+    if (sfs->super_dirty) {
+        sfs_sync_super(sfs);
+        sfs_sync_freemap(sfs);
+        swapper_block_changed(0);
+    }
+
+    int secno = -1;
 
     if (sin->dirty) {
         lock_sin(sin);
@@ -620,8 +672,38 @@ sfs_fsync(struct inode *node) {
                 }
             }
         }
+        // int secno = 0;
+        kprintf("in %s: sin->din is %d sin->ino is %d\n", __func__, sin->din, sin->ino);
+        int tmp_din = sin->ino;
+        while (tmp_din >= 0) {
+            secno += 1; // start from `-1`
+            tmp_din -= 32;
+        }
         unlock_sin(sin);
     }
+
+    // kprintf("secno is %d sfs->super_dirty is %s\n", secno, sfs->super_dirty ? "true" : "false");
+    // assert((secno < 0 && !sfs->super_dirty) || (secno >= 0 && sfs->super_dirty));
+    if (secno != 0) {
+        kprintf("sync is secno %d\n", secno);
+        if (sfs->super_dirty) {
+            sfs->super_dirty = 0;
+            swapper_block_sync(0);
+        }
+        if (secno > 0) {
+            swapper_block_sync(secno);
+        }
+    }
+    if (secno == 0) {
+        swapper_block_sync(0);
+    }
+    swapper_block_real_sync();
+    // kprintf("super->unused_blocks is %d\n", sfs->super.unused_blocks);
+    // uint16_t *begin = (uint16_t *)_initrd_begin;
+    // int item = 0;
+    // for (item = 0; item < 4000; ++item) {
+    //     kprintf("0x%04x ", begin[item]);
+    // }
     // kprintf("in %s: %d is %s and addr. of sfs is 0x%08x addr. of freemap is 0x%08x\n",
     // __func__, 436, sfs_block_inuse(sfs, 436)?"used":"free", sfs, sfs->freemap);
     return ret;
@@ -692,10 +774,13 @@ failed:
 static int
 sfs_getdirentry_sub_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, int slot, struct sfs_disk_entry *entry) {
     int ret, i, nslots = sin->din->blocks;
+    kprintf("%s %s %d din->blocks is %d\n", __FILE__, __func__, __LINE__, nslots);
     for (i = 0; i < nslots; i ++) {
         if ((ret = sfs_dirent_read_nolock(sfs, sin, i, entry)) != 0) {
+            kprintf("%s %s %d can not read entry\n", __FILE__, __func__, __LINE__);
             return ret;
         }
+        // kprintf("%s\n", __func__);
         if (entry->ino != 0) {
             if (slot == 0) {
                 return 0;
@@ -710,6 +795,7 @@ static int
 sfs_getdirentry(struct inode *node, struct iobuf *iob) {
     struct sfs_disk_entry *entry;
     if ((entry = kmalloc(sizeof(struct sfs_disk_entry))) == NULL) {
+        kprintf("%s %s %d -E_NO_MEM\n", __FILE__, __func__, __LINE__);
         return -E_NO_MEM;
     }
 
@@ -719,19 +805,23 @@ sfs_getdirentry(struct inode *node, struct iobuf *iob) {
     int ret, slot;
     off_t offset = iob->io_offset;
     if (offset < 0 || offset % sfs_dentry_size != 0) {
+        kprintf("%s %s %d -E_INVAL\n", __FILE__, __func__, __LINE__);
         kfree(entry);
         return -E_INVAL;
     }
     if ((slot = offset / sfs_dentry_size) > sin->din->blocks) {
+        kprintf("%s %s %d -E_NOENT\n", __FILE__, __func__, __LINE__);
         kfree(entry);
         return -E_NOENT;
     }
     lock_sin(sin);
     if ((ret = sfs_getdirentry_sub_nolock(sfs, sin, slot, entry)) != 0) {
         unlock_sin(sin);
+        kprintf("%s %s %d can not find!!! slot is %d\n", __FILE__, __func__, __LINE__, slot);
         goto out;
     }
     unlock_sin(sin);
+    kprintf("sfs_getdirentry\n");
     ret = iobuf_move(iob, entry->name, sfs_dentry_size, 1, NULL);
 out:
     kfree(entry);
@@ -883,7 +973,7 @@ alloc_disk_inode(unsigned short type) {
 
 static int
 sfs_create(struct inode *node, const char *name, bool excl, struct inode **node_store) {
-    kprintf("ready to create a file\n");
+    // kprintf("ready to create a file\n");
     if (strlen(name) > SFS_MAX_FNAME_LEN) {
         return -1;
     }
@@ -897,6 +987,7 @@ sfs_create(struct inode *node, const char *name, bool excl, struct inode **node_
     lock_sfs_fs(sfs);
     // sfs_block_alloc(struct sfs_fs *sfs, uint32_t *ino_store)
     sfs_dirent_search_nolock(sfs, sin, name, node_tmp, NULL, &empty_slot);
+    // kprintf("%s\n", __func__);
     if (node_tmp) {
         node_store = node_tmp;
     } else {
@@ -907,19 +998,38 @@ sfs_create(struct inode *node, const char *name, bool excl, struct inode **node_
         struct sfs_disk_inode *din = alloc_disk_inode(SFS_TYPE_FILE);
         int ino;
         sfs_block_alloc(sfs, &ino);
+        // kprintf("%s\n", __func__);
         if (sfs_block_inuse(sfs, ino)) {
             kprintf("be sure use\n");
         } else {
             kprintf("not used\n");
         }
         sfs_create_inode(sfs, din, ino, &node_tmp);
-        ++ din->__nlinks__;
+        ++ (din->__nlinks__);
         sfs_set_links(sfs, vop_info(node_tmp, sfs_inode));
-        kprintf("0x%08x\n", node_tmp);
+        // kprintf("0x%08x\n", node_tmp);
         // sfs_namefile(struct inode *node, struct iobuf *iob)
         // sfs_dirent_write_nolock(struct sfs_fs *sfs, struct sfs_inode *sin, int slot, uint32_t ino, const char *name)
         sfs_dirent_write_nolock(sfs, sin, empty_slot, ino, name);
+        // ++ sin->din->blocks;
+        int secno = ram2block(ino);
+        swapper_block_changed(secno);
+        swapper_block_late_sync(secno);
+        // kprintf("sin->ino is %d\n", sin->ino);
         sin->dirty = 1;
+        lock_sin(sin);
+        {
+            if (sin->dirty) {
+                sin->dirty = 0;
+                if ((ret = sfs_wbuf(sfs, sin->din, sizeof(struct sfs_disk_inode), sin->ino, 0)) != 0) {
+                    sin->dirty = 1;
+                }
+            }
+        }
+        unlock_sin(sin);
+        secno = ram2block(sin->ino);
+        swapper_block_changed(secno);
+        swapper_block_late_sync(secno);
         vop_info(node_tmp, sfs_inode)->dirty = 1;
         sfs->super_dirty = 1;
         // if ((ret = sfs_bmap_load_nolock(sfs, sin, slot, &ino)) != 0) {
@@ -928,6 +1038,7 @@ sfs_create(struct inode *node, const char *name, bool excl, struct inode **node_
         // assert(sfs_block_inuse(sfs, ino));
         kprintf("ino is %d\n", ino);
         kprintf("empty slot is %d\n", empty_slot);
+        kprintf("father ino is %d\n", sin->ino);
         *node_store = node_tmp;
     }
     unlock_sfs_fs(sfs);

@@ -13,8 +13,19 @@
 #include <error.h>
 #include <assert.h>
 
+#include "thinflash.h"
+
 static int
 sfs_sync(struct fs *fs) {
+
+    // debug
+    int u;
+    kprintf("--- %d ---\n", 1);
+    for (u = _initrd_begin; u < _initrd_end; ++u) {
+        kprintf("%02x ", *((char *)u));
+    }
+    kprintf("\n");
+
     struct sfs_fs *sfs = fsop_info(fs, sfs);
     lock_sfs_fs(sfs);
     {
@@ -25,6 +36,13 @@ sfs_sync(struct fs *fs) {
         }
     }
     unlock_sfs_fs(sfs);
+
+    kprintf("--- %d ---\n", 2);
+    for (u = _initrd_begin; u < _initrd_end; ++u) {
+        kprintf("%02x ", *((char *)u));
+    }
+    kprintf("\n");
+
 
     int ret;
     if (sfs->super_dirty) {
@@ -38,6 +56,15 @@ sfs_sync(struct fs *fs) {
             return ret;
         }
     }
+
+    kprintf("--- %d ---\n", 3);
+    for (u = _initrd_begin; u < _initrd_end; ++u) {
+        kprintf("%02x ", *((char *)u));
+    }
+    kprintf("\n");
+
+    swapper_all_block_sync();
+
     return 0;
 }
 
@@ -179,6 +206,9 @@ sfs_do_mount(struct device *dev, struct fs **fs_store) {
             unused_blocks ++;
         }
     }
+    kprintf("unused_blocks is %d and super->unused_blocks is %d", \
+        unused_blocks, sfs->super.unused_blocks);
+        // while (1);
     assert(unused_blocks == sfs->super.unused_blocks);
 
     /* and other fields */

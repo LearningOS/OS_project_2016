@@ -5,10 +5,10 @@
 #include "ide.h"
 #include "assert.h"
 
-#define THINFLASH_SIZE (8 << 20)
+#define THINFLASH_SIZE        (8 << 20)
 #define THINFLASH_SECTOR_SIZE (128 << 10)
-#define THINFLASH_UNIT_SIZE (2)
-#define THINFLASH_NR_SECTOR (64)
+#define THINFLASH_UNIT_SIZE   (2)
+#define THINFLASH_NR_SECTOR   (64)
 #define THINFLASH_SECTOR_UNIT (THINFLASH_SECTOR_SIZE / THINFLASH_UNIT_SIZE)
 
 #define THINFLASH_BASE (uint16_t*)(0xBE000000)

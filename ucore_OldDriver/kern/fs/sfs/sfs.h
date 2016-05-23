@@ -7,6 +7,8 @@
 #include <sem.h>
 #include <unistd.h>
 
+#include "flashswap.h"
+
 #define SFS_MAGIC                                   0x2f8dbe2a              /* magic number for sfs */
 #define SFS_BLKSIZE                                 PGSIZE                  /* size of block */
 #define SFS_BLKSIZE_SHIFT                           PGSHIFT

@@ -7,7 +7,7 @@ ON_FPGA :=n
 V       := @
 
 #GCCPREFIX:=/home/myucore/mips_gcc/bin/mips-sde-elf-
-#GCCPREFIX:=/home/donghy/mips_gcc/bin/mips-sde-elf-
+GCCPREFIX:=/home/donghy/mips_gcc/bin/mips-sde-elf-
 #GCCPREFIX ?= /home/guest/cpu/build-gcc/mips_gcc/bin/mips-sde-elf-
 
 # eliminate default suffix rules
@@ -53,7 +53,8 @@ SRCDIR  := kern
 DEPDIR  := dep
 
 
-MODULES   := fetchrun init libs debug driver trap mm sync process schedule syscall fs fs/vfs fs/sfs fs/devs ftp ftp/libs
+#MODULES   := fetchrun init libs debug driver trap mm sync process schedule syscall fs fs/vfs fs/sfs fs/devs ftp ftp/libs
+MODULES   := fetchrun init libs debug driver trap mm sync process schedule syscall fs fs/vfs fs/sfs fs/devs flashswapper ftp/libs
 SRC_DIR   := $(addprefix $(SRCDIR)/,$(MODULES))
 BUILD_DIR := $(addprefix $(OBJDIR)/,$(MODULES))
 DEP_DIR   := $(addprefix $(DEPDIR)/,$(MODULES))
@@ -72,7 +73,7 @@ INITRD_BLOCK_CNT:=800
 FPGA_LD_FLAGS += -S
 MACH_DEF := -DMACH_FPGA
 else
-USER_APPLIST:= pwd cat sh ls forktest yield hello faultreadkernel faultread badarg waitkill pgdir exit sleep #touch fwrite ftp
+USER_APPLIST:= pwd cat sh ls hello fwrite ftp touch# forktest yield faultreadkernel faultread badarg waitkill pgdir exit sleep touch fwrite ftp
 # 2M
 INITRD_BLOCK_CNT:=4000
 MACH_DEF := -DMACH_QEMU

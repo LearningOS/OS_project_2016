@@ -23,9 +23,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <fs.h>
-
-//debug-for-transplant
-// #include <stdio.h>
+#include "flashswap.h"
 
 #define MIN(x,y) (((x)<(y))?(x):(y))
 
@@ -65,6 +63,31 @@ static int ramdisk_write(struct ide_device* dev, size_t secno,const  void *src, 
 
 static void ramdisk_init(struct ide_device* dev){
     kprintf("ramdisk_init(): initrd found, magic: 0x%08x, 0x%08x secs\n", *(uint32_t*)(dev->iobase), dev->size);
+    uint16_t *addr = (uint16_t*)(dev->iobase);
+    // int num = dev->size / 2;
+    int num = dev->size * (SECTSIZE >> 1);
+    int i;
+    uint16_t *flash_base = 0xBE000000;
+    *flash_base = 0xFF;
+    if (flash_base[THINFLASH_NR_SECTOR * THINFLASH_SECTOR_UNIT] == FLASHMAGIC) {
+        for (i = 0; i < num; ++i) {
+            // if (i % 256 == 0) {
+            //     kprintf("%d: \n", i / 256);
+            // }
+            addr[i] = flash_base[i];
+            // if (i % 256 == 0) {
+            //     kprintf("\n----------------------\n");
+            // }
+            // if (i % 32 == 0) {
+            //     kprintf("\n");
+            // }
+            // if (i / 256 < 2) {
+            //     kprintf("0x%04x ", addr[i]);
+            // }
+        }
+    }
+    // kprintf("hahahahha and num is %d\n", num);
+    // while (1);
 }
 
 

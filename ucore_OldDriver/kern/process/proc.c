@@ -963,6 +963,8 @@ init_main(void *arg) {
         schedule();
     }
 
+    // panic ("if has flash_thread, then never should come here\n");
+
     fs_cleanup();
     kprintf("all user-mode processes have quit.\n");
     assert(initproc->cptr == NULL && initproc->yptr == NULL && initproc->optr == NULL);
@@ -1020,6 +1022,7 @@ proc_init(void) {
 // cpu_idle - at the end of kern_init, the first kernel thread idleproc will do below works
 void
 cpu_idle(void) {
+    kprintf("cpu_idle\n");
     while (1) {
         if (current->need_resched) {
             schedule();

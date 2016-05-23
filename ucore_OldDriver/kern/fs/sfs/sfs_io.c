@@ -77,6 +77,7 @@ sfs_sync_super(struct sfs_fs *sfs) {
         memset(sfs->sfs_buffer, 0, SFS_BLKSIZE);
         memcpy(sfs->sfs_buffer, &(sfs->super), sizeof(sfs->super));
         ret = sfs_rwblock_nolock(sfs, sfs->sfs_buffer, SFS_BLKN_SUPER, 1, 0);
+        // swapper_block_sync(0);
     }
     unlock_sfs_io(sfs);
     return ret;
@@ -85,7 +86,9 @@ sfs_sync_super(struct sfs_fs *sfs) {
 int
 sfs_sync_freemap(struct sfs_fs *sfs) {
     uint32_t nblks = sfs_freemap_blocks(&(sfs->super));
-    return sfs_wblock(sfs, bitmap_getdata(sfs->freemap, NULL), SFS_BLKN_FREEMAP, nblks);
+    int ret = sfs_wblock(sfs, bitmap_getdata(sfs->freemap, NULL), SFS_BLKN_FREEMAP, nblks);
+    // swapper_block_sync(0);
+    return ret;
 }
 
 int

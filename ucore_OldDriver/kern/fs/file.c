@@ -312,7 +312,7 @@ file_getdirentry(int fd, struct dirent *direntp) {
         return ret;
     }
     filemap_acquire(file);
-
+    kprintf("%s %s %d\n", __FILE__, __func__, __LINE__);
     struct iobuf __iob, *iob = iobuf_init(&__iob, direntp->name, sizeof(direntp->name), direntp->offset);
     if ((ret = vop_getdirentry(file->node, iob)) == 0) {
         direntp->offset += iobuf_used(iob);
