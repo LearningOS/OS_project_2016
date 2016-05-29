@@ -54,7 +54,7 @@ DEPDIR  := dep
 
 
 #MODULES   := fetchrun init libs debug driver trap mm sync process schedule syscall fs fs/vfs fs/sfs fs/devs ftp ftp/libs
-MODULES   := fetchrun init libs debug driver trap mm sync process schedule syscall fs fs/vfs fs/sfs fs/devs flashswapper ftp/libs
+MODULES   := fetchrun init libs debug driver trap mm sync process schedule syscall fs fs/vfs fs/sfs fs/devs flashswapper ftp/libs ftp
 SRC_DIR   := $(addprefix $(SRCDIR)/,$(MODULES))
 BUILD_DIR := $(addprefix $(OBJDIR)/,$(MODULES))
 DEP_DIR   := $(addprefix $(DEPDIR)/,$(MODULES))
@@ -68,12 +68,12 @@ INCLUDES  := $(addprefix -I,$(SRC_DIR))
 INCLUDES  += -I$(SRCDIR)/include
 
 ifeq  ($(ON_FPGA), y)
-USER_APPLIST:= sh #ppt flappybird snake ls cat forktest
+USER_APPLIST:= cat ftp_monk#ppt flappybird snake ls cat forktest sh
 INITRD_BLOCK_CNT:=800
 FPGA_LD_FLAGS += -S
 MACH_DEF := -DMACH_FPGA
 else
-USER_APPLIST:= pwd cat sh ls hello fwrite ftp touch# forktest yield faultreadkernel faultread badarg waitkill pgdir exit sleep touch fwrite ftp
+USER_APPLIST:= pwd cat sh ls hello fwrite ftp ftp_monk touch# forktest yield faultreadkernel faultread badarg waitkill pgdir exit sleep touch fwrite ftp
 # 2M
 INITRD_BLOCK_CNT:=4000
 MACH_DEF := -DMACH_QEMU

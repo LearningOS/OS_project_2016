@@ -93,10 +93,11 @@ int swapper_thread(void *arg) { // const
         }
         has_task = 0;
         for (int i = 0; i < THINFLASH_NR_SECTOR; ++i) {
+            // kprintf("---- %d ----\n", i);
             switch (block_status[i]) {
                 case THINFLASH_STATUS_DIRTY:
                     // kprintf("%d:DIRTY\n", i);
-                    kprintf("asynchronous erase %d\n", i);
+                    // kprintf("asynchronous erase %d\n", i);
                     block_status[i] = THINFLASH_STATUS_CLEANING;
                     erase_noblock(i);
                     has_task = 1;
@@ -134,8 +135,10 @@ void swapper_block_changed(int secno) {
     assert(secno >= 0 && secno < THINFLASH_NR_SECTOR);
     local_intr_save (intr_flag);
     if (block_status[secno] == THINFLASH_STATUS_CONSISTENT) {
+        // kprintf("%d -- mark dirty\n");
         block_status[secno] = THINFLASH_STATUS_DIRTY;
     }
+    // while (1);
     local_intr_restore (intr_flag);
 }
 
@@ -153,7 +156,7 @@ void swapper_block_sync(int secno) {
 
 void swapper_block_late_sync(int secno) {
     assert (secno >= 0 && secno < THINFLASH_NR_SECTOR);
-    kprintf("swapper_block_late_sync at %d\n", secno);
+    // kprintf("swapper_block_late_sync at %d\n", secno);
     local_intr_save (intr_flag);
     if (block_status[secno] != THINFLASH_STATUS_CONSISTENT) {
         block_should_sync[secno] = THINFLASH_SYNC_LATE;
