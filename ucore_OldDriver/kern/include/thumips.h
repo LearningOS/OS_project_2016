@@ -83,6 +83,6 @@ outw(uint32_t port, uint32_t data) {
 #define KEYBOARD_IRQ    6
 #define KEYBOARD        0xAF000000
 
-#define ETH_IRQ         10
+#define ETH_IRQ         2
 
 #endif /* !__LIBS_THUMIPS_H__ */

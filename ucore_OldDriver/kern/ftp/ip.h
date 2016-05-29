@@ -1,6 +1,12 @@
 #ifndef _H_IP_
 #define _H_IP_ value
 
+extern int ip_rx_data[2048];
+extern int ip_rx_len;
+extern int ip_tx_data[2048];
+extern int ip_tx_len;
+extern int proto;
+
 #define ETHERNET_TYPE_IP 0x0800
 
 #define IP_VERSION 0
@@ -14,10 +20,13 @@
 
 #define IP_SRC 12
 #define IP_DST 16
-
+#define IP_ADDR_LEN 4
 #define IP_HDR_LEN 20
 
-void ip_handle();
-void ip_make_reply(int proto, int length);
+extern int IP_ADDR[IP_ADDR_LEN];
+extern int REMOTE_IP_ADDR[IP_ADDR_LEN];
+
+void ip_send();
+void ip_recv();
 
 #endif

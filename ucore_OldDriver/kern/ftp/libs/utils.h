@@ -9,10 +9,11 @@
 void delay_ms(int ms);
 void delay_us(int us);
 
-int eth_memcmp(int * a, int * b, int length);
-void eth_memcpy(int * dst, int * src, int length);
+int eth_memcmp(int * a, int *b, int length);
+int eth_memzero(int *a, int length);
+void eth_memcpy(int *dst, int *src, int length);
 
-int mem2int(int * data, int length);
-void int2mem(int * data, int length, int val);
+int mem2int(int *data, int length);
+void int2mem(int *data, int length, int val);
 
 #endif

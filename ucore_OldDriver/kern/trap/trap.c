@@ -4,6 +4,7 @@
 #include <trap.h>
 #include <thumips.h>
 #include <thumips_tlb.h>
+#include <ethernet.h>
 #include <stdio.h>
 #include <mmu.h>
 #include <pmm.h>
@@ -103,6 +104,10 @@ static void interrupt_handler(struct trapframe *tf)
           // kprintf("KEYBOARD\n");
           keyboard_int_handler();
           break;
+        case ETH_IRQ:
+          kprintf("ETHERNET\n");
+          ethernet_int_handler();
+          break;
         default:
           print_trapframe(tf);
           panic("Unknown interrupt!");
@@ -185,7 +190,7 @@ static void handle_tlbmiss(struct trapframe* tf, int write)
     /* refill two slot */
     /* check permission */
     if(in_kernel){
-      tlb_refill(badaddr, pte); 
+      tlb_refill(badaddr, pte);
     //kprintf("## refill K\n");
       return;
     }else{
@@ -292,4 +297,3 @@ mips_trap(struct trapframe *tf)
     }
   }
 }
-

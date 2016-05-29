@@ -1,10 +1,10 @@
 #ifndef _H_ARP_
 #define _H_ARP_ value
 
-#include <defs.h>
-#include <ethernet.h>
-
-extern int IP_ADDR[4];
+extern int arp_rx_data[2048];
+extern int arp_rx_len;
+extern int arp_tx_data[2048];
+extern int arp_tx_len;
 
 #define ETHERNET_TYPE_ARP 0x0806
 
@@ -13,13 +13,17 @@ extern int IP_ADDR[4];
 #define ARP_TYPE_REPLY 0x2
 
 #define ARP_SENDER_MAC 8
-#define ARP_SENDER_IP (ARP_SENDER_MAC+6)
-#define ARP_TARGET_MAC (ARP_SENDER_IP+4)
-#define ARP_TARGET_IP (ARP_TARGET_MAC+6)
+#define ARP_SENDER_IP 14
+#define ARP_TARGET_MAC 18
+#define ARP_TARGET_IP 24
+#define ARP_MAC_LEN 6
+#define ARP_IP_LEN 4
+#define ARP_HDR_LEN 28
 
-#define ARP_BODY_LEN (ARP_TARGET_IP + 4)
+extern int IP_ADDR[ARP_IP_LEN];
+extern int REMOTE_IP_ADDR[ARP_IP_LEN];
 
-// handle arp
-void arp_handle();
+void arp_send(int arp_type);
+void arp_recv();
 
 #endif

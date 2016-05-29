@@ -1,13 +1,15 @@
 #include "utils.h"
 #include "defs.h"
 
-void delay_ms(int ms) {
+void delay_ms(int ms)
+{
 	int i, j;
     for (i=0; i<ms; i+=1)
         for (j=0; j<446; j+=1);
 }
 
-void delay_us(int us) {
+void delay_us(int us)
+{
 	int i;
     for (i=0; i<us; i+=1) {
         nop(); nop(); nop();
@@ -15,8 +17,8 @@ void delay_us(int us) {
     }
 }
 
-
-int eth_memcmp(int *a, int *b, int length) {
+int eth_memcmp(int *a, int *b, int length)
+{
 	int i;
     for (i=0; i<length; i+=1)
         if (a[i] != b[i])
@@ -24,14 +26,25 @@ int eth_memcmp(int *a, int *b, int length) {
     return 0;
 }
 
-void eth_memcpy(int *dst, int *src, int length) {
+int eth_memzero(int *a, int length)
+{
+	int i;
+	for (i=0; i<length; i+=1)
+		if (a[i] != 0)
+			return -1;
+	return 0;
+}
+
+void eth_memcpy(int *dst, int *src, int length)
+{
 	int i;
     for (i=0; i<length; i+=1)
         dst[i] = LSB(src[i]);
 }
 
 
-int mem2int(int *data, int length) {
+int mem2int(int *data, int length)
+{
     int ret = 0;
 	int i;
     for (i=0; i<length; i+=1) {
@@ -41,7 +54,8 @@ int mem2int(int *data, int length) {
     return ret;
 }
 
-void int2mem(int *data, int length, int val) {
+void int2mem(int *data, int length, int val)
+{
 	int i;
     for (i=0; i<length; i+=1) {
         data[length - i - 1] = LSB(val);

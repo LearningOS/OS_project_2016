@@ -1,23 +1,12 @@
 #ifndef _H_ETHERNET
 #define _H_ETHERNET value
 
-extern int MAC_ADDR[6];
 extern int ethernet_rx_data[2048];
 extern int ethernet_rx_len;
 extern int ethernet_tx_data[2048];
 extern int ethernet_tx_len;
 
 #define ETHERNET_ISR (*(unsigned int *)ENET_INT_ADDR)
-
-#define ETHERNET_DST_MAC 0
-#define ETHERNET_SRC_MAC 6
-#define ETHERNET_HDR_LEN 14
-
-#define ethernet_rx_type ((ethernet_rx_data[12] << 8) | ethernet_rx_data[13])
-#define ethernet_rx_src (ethernet_rx_data + ETHERNET_SRC_MAC)
-#define ethernet_rx_dst (ethernet_rx_data + ETHERNET_DST_MAC)
-
-void ethernet_set_tx(int * dst, int type);
 
 #define ENET_INT_ADDR 0xBFD0008
 #define ENET_IO_ADDR 0xBA000000
