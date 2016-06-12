@@ -1,0 +1,106 @@
+\documentclass[a4paper,article,indent]{article}
+\usepackage{latexsym}
+\usepackage{xeCJK}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{multirow}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings} 
+\usepackage{verbatim}
+\usepackage[explicit]{titlesec}
+\usepackage{hyperref}
+
+\setmainfont{Hiragino Sans GB W3}
+
+\pagestyle{fancy}
+\linespread{1.5}
+
+\newcommand{\HUGE}{\fontsize{29pt}{29pt}\selectfont}
+
+\setlength{\parindent}{2em}
+\graphicspath{{chapter/}{Images/}}
+\geometry{left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\lstset{
+basicstyle=\footnotesize,
+framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox
+}
+
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}
+  {\Huge\hyperlink{chap\thechapter}{#1}}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\huge\bfseries}{}{-22pt}
+  {\Huge#1}
+
+\makeatletter
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+  \refstepcounter{chapter}%
+  \typeout{\@chapapp\space\thechapter.}%
+  \addcontentsline{toc}{chapter}%
+    {\protect\numberline{\thechapter}\string\hypertarget{chap\thechapter}{#1}}%
+\else
+  \addcontentsline{toc}{chapter}{#1}%
+\fi
+\chaptermark{#1}%
+\addtocontents{lof}{\protect\addvspace{10\p@}}%
+\addtocontents{lot}{\protect\addvspace{10\p@}}%
+\if@twocolumn
+  \@topnewpage[\@makechapterhead{#2}]%
+\else
+  \@makechapterhead{#2}%
+  \@afterheading
+\fi}
+\makeatother
+
+
+\begin{document}
+\begin{titlepage}
+% 首行的位置往上调整。但vspace前面需要有东西才会起效。
+\phantom{Start!}
+\vspace*{-1.7cm}
+
+\begin{flushleft}
+\emph{\Large 清华大学计算机科学与技术系}\\[0.2cm]
+\emph{\Large 计算机组成原理挑战课暨软件工程联合大实验}\\[4.2cm]
+\end{flushleft}
+% Title
+\begin{center}
+{ \Huge \bfseries 操作系统课程设计最终文档}\\[0.5cm]
+{ \LARGE \bfseries \qquad \qquad \qquad --Serial, Flash and Debugger}\\[0.5cm]
+{ \Large  清华大学计算机系}\\[0.2cm]
+{ \Large  李宇轩}\\[0.5cm]
+\end{center}
+
+\vfill
+
+\begin{flushright}
+% \pillar：使用一种统一的方法提高行高
+\newcommand{\pillar}{ {\Huge \phantom{A}} }
+\large
+\begin{tabular}{lll}
+\pillar \emph{组员} & 李宇轩 & 2013011349 \\\cline{2-3}
+\pillar \emph{组员} & 董豪宇 & 2013011356 \\\cline{2-3}
+\pillar \emph{组员} & 梁泽宇 & 2013011346 \\\cline{2-3}
+\end{tabular}
+\end{flushright}
+
+\end{titlepage}
+
+\renewcommand{\contentsname}{目录}
+\tableofcontents
+\clearpage
+
+\input{main}
+
+\clearpage
+
+\end{document}
