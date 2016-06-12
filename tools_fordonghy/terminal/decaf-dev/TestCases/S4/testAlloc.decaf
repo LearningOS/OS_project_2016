@@ -1,0 +1,9 @@
+class Hanoi {
+}
+class Main {
+	static void main() {
+		class Hanoi hanoi;
+		hanoi = new Hanoi();
+	}
+}
+

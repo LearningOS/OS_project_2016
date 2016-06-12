@@ -69,7 +69,7 @@ static void ramdisk_init(struct ide_device* dev){
     int i;
     uint16_t *flash_base = 0xBE000000;
     *flash_base = 0xFF;
-    if (flash_base[THINFLASH_NR_SECTOR * THINFLASH_SECTOR_UNIT] == FLASHMAGIC) {
+    if (0 && flash_base[THINFLASH_NR_SECTOR * THINFLASH_SECTOR_UNIT] == FLASHMAGIC) {
         for (i = 0; i < num; ++i) {
             // if (i % 256 == 0) {
             //     kprintf("%d: \n", i / 256);

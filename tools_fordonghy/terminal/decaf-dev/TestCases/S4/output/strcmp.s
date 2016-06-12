@@ -1,0 +1,227 @@
+          .text                         
+          .globl main                   
+
+          .data                         
+          .align 2                      
+_Main:                                  # virtual table
+          .word 0                       # parent
+          .word _STRING0                # class name
+
+
+
+          .text                         
+_Main_New:                              # function entry
+          sw $fp, 0($sp)                
+          sw $ra, -4($sp)               
+          move $fp, $sp                 
+          addiu $sp, $sp, -16           
+_L18:                                   
+          li    $t0, 4                  
+          sw    $t0, 4($sp)             
+          jal   _Alloc                  
+          nop                           
+          move  $t0, $v0                
+          la    $t1, _Main              
+          sw    $t1, 0($t0)             
+          move  $v0, $t0                
+          move  $sp, $fp                
+          lw    $ra, -4($fp)            
+          lw    $fp, 0($fp)             
+          jr    $ra                     
+          nop                           
+
+_Main.compareString:                    # function entry
+          sw $fp, 0($sp)                
+          sw $ra, -4($sp)               
+          move $fp, $sp                 
+          addiu $sp, $sp, -20           
+_L19:                                   
+          lw    $t0, 4($fp)             
+          sw    $t0, 4($sp)             
+          lw    $t1, 8($fp)             
+          sw    $t1, 8($sp)             
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          jal   _StringEqual            
+          nop                           
+          move  $t2, $v0                
+          lw    $t0, 4($fp)             
+          lw    $t1, 8($fp)             
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          beqz  $t2, _L21               
+          nop                           
+_L20:                                   
+          la    $t0, _STRING1           
+          move  $v0, $t0                
+          move  $sp, $fp                
+          lw    $ra, -4($fp)            
+          lw    $fp, 0($fp)             
+          jr    $ra                     
+          nop                           
+_L21:                                   
+          lw    $t0, 4($fp)             
+          sw    $t0, 4($sp)             
+          lw    $t1, 8($fp)             
+          sw    $t1, 8($sp)             
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          jal   _StringEqual            
+          nop                           
+          move  $t2, $v0                
+          lw    $t0, 4($fp)             
+          lw    $t1, 8($fp)             
+          nor   $t3, $t2, $zero         
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          beqz  $t3, _L23               
+          nop                           
+_L22:                                   
+          la    $t0, _STRING2           
+          move  $v0, $t0                
+          move  $sp, $fp                
+          lw    $ra, -4($fp)            
+          lw    $fp, 0($fp)             
+          jr    $ra                     
+          nop                           
+_L23:                                   
+          la    $t0, _STRING3           
+          move  $v0, $t0                
+          move  $sp, $fp                
+          lw    $ra, -4($fp)            
+          lw    $fp, 0($fp)             
+          jr    $ra                     
+          nop                           
+
+_Main.printCompareString:               # function entry
+          sw $fp, 0($sp)                
+          sw $ra, -4($sp)               
+          move $fp, $sp                 
+          addiu $sp, $sp, -20           
+_L25:                                   
+          la    $t0, _STRING4           
+          sw    $t0, 4($sp)             
+          jal   _PrintString            
+          nop                           
+          lw    $t0, 4($fp)             
+          sw    $t0, 4($sp)             
+          sw    $t0, 4($fp)             
+          jal   _PrintString            
+          nop                           
+          lw    $t0, 4($fp)             
+          la    $t1, _STRING5           
+          sw    $t1, 4($sp)             
+          sw    $t0, 4($fp)             
+          jal   _PrintString            
+          nop                           
+          lw    $t0, 4($fp)             
+          lw    $t1, 8($fp)             
+          sw    $t1, 4($sp)             
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          jal   _PrintString            
+          nop                           
+          lw    $t0, 4($fp)             
+          lw    $t1, 8($fp)             
+          la    $t2, _STRING6           
+          sw    $t2, 4($sp)             
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          jal   _PrintString            
+          nop                           
+          lw    $t0, 4($fp)             
+          lw    $t1, 8($fp)             
+          sw    $t0, 4($sp)             
+          sw    $t1, 8($sp)             
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          jal   _Main.compareString     
+          nop                           
+          move  $t2, $v0                
+          lw    $t0, 4($fp)             
+          lw    $t1, 8($fp)             
+          sw    $t2, 4($sp)             
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          jal   _PrintString            
+          nop                           
+          lw    $t0, 4($fp)             
+          lw    $t1, 8($fp)             
+          la    $t2, _STRING7           
+          sw    $t2, 4($sp)             
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          jal   _PrintString            
+          nop                           
+          lw    $t0, 4($fp)             
+          lw    $t1, 8($fp)             
+          sw    $t0, 4($fp)             
+          sw    $t1, 8($fp)             
+          li    $v0, 0                  
+          move  $sp, $fp                
+          lw    $ra, -4($fp)            
+          lw    $fp, 0($fp)             
+          jr    $ra                     
+          nop                           
+
+main:                                   # function entry
+          sw $fp, 0($sp)                
+          sw $ra, -4($sp)               
+          move $fp, $sp                 
+          addiu $sp, $sp, -20           
+_L26:                                   
+          la    $t0, _STRING8           
+          la    $t1, _STRING9           
+          sw    $t0, 4($sp)             
+          sw    $t1, 8($sp)             
+          jal   _Main.printCompareString
+          nop                           
+          la    $t0, _STRING10          
+          la    $t1, _STRING11          
+          sw    $t0, 4($sp)             
+          sw    $t1, 8($sp)             
+          jal   _Main.printCompareString
+          nop                           
+          la    $t0, _STRING12          
+          la    $t1, _STRING12          
+          sw    $t0, 4($sp)             
+          sw    $t1, 8($sp)             
+          jal   _Main.printCompareString
+          nop                           
+          li    $v0, 0                  
+          move  $sp, $fp                
+          lw    $ra, -4($fp)            
+          lw    $fp, 0($fp)             
+          jr    $ra                     
+          nop                           
+
+
+
+
+          .data                         
+_STRING4:
+          .asciiz "\""                  
+_STRING5:
+          .asciiz "\" and \""           
+_STRING6:
+          .asciiz "\": "                
+_STRING7:
+          .asciiz "\n"                  
+_STRING3:
+          .asciiz "The impossible happens!"
+_STRING2:
+          .asciiz "Unequal"             
+_STRING12:
+          .asciiz "Hello"               
+_STRING1:
+          .asciiz "Equal"               
+_STRING8:
+          .asciiz "Jobs"                
+_STRING11:
+          .asciiz "CASE SENSITIVE"      
+_STRING10:
+          .asciiz "case sensitive"      
+_STRING0:
+          .asciiz "Main"                
+_STRING9:
+          .asciiz "Gates"               

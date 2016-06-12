@@ -1,0 +1,8 @@
+class Main {
+    static void main() {
+    }
+    
+    static bool GetYesOrNo(string prompt) {
+		return ReadInteger() != 0;
+    }
+}

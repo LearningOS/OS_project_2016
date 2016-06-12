@@ -129,4 +129,3 @@ int fetchrun(int fd, const char *fpath_user, size_t fpath_len) {
 /**
  * vim: foldmethod=marker
  */
-

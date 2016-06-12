@@ -32,7 +32,7 @@
 #define THINFLASH_SYNC_SHOULD       (0x01)
 #define THINFLASH_SYNC_LATE         (0x02)
 
-#define FLASHMAGIC (0xABCE)
+#define FLASHMAGIC (0xABCD)
 
 void swapper_init();
 void swapper_block_changed(int secno);

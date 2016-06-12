@@ -97,7 +97,7 @@ int swapper_thread(void *arg) { // const
             switch (block_status[i]) {
                 case THINFLASH_STATUS_DIRTY:
                     // kprintf("%d:DIRTY\n", i);
-                    // kprintf("asynchronous erase %d\n", i);
+                    kprintf("asynchronous erase %d\n", i);
                     block_status[i] = THINFLASH_STATUS_CLEANING;
                     erase_noblock(i);
                     has_task = 1;
@@ -198,7 +198,8 @@ int read_from_flash(void *begin, void *end) {
 
 void swapper_init() {
     *flash_base = THINFLASH_CMD_READ;
-    if (flash_base[THINFLASH_NR_SECTOR * THINFLASH_SECTOR_UNIT] == FLASHMAGIC) {
+    // return ;
+    if (0 && flash_base[THINFLASH_NR_SECTOR * THINFLASH_SECTOR_UNIT] == FLASHMAGIC) {
         int secno;
         for (secno = 0; secno < THINFLASH_NR_SECTOR; ++secno) {
             block_status[secno] = THINFLASH_STATUS_CONSISTENT;
@@ -218,6 +219,7 @@ void swapper_init() {
         // mark the FLASHMAGIC
         flash_base[THINFLASH_NR_SECTOR * THINFLASH_SECTOR_UNIT] = THINFLASH_CMD_WRITE;
         flash_base[THINFLASH_NR_SECTOR * THINFLASH_SECTOR_UNIT] = FLASHMAGIC;
+        wait_access();
     }
     kprintf("OK\n");
     // while (1);
